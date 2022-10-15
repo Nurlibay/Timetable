@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "850266137792",
+    "project_id": "timetable-5adbc",
+    "storage_bucket": "timetable-5adbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850266137792:android:706fa54ad627991a82f925",
+        "android_client_info": {
+          "package_name": "uz.unidev.timetable"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850266137792-gbqep9hjp4cj1euj1s80pnshq875etta.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAC4dnAFqWoq-fepCeccA-4BYaF9IbV60I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850266137792-gbqep9hjp4cj1euj1s80pnshq875etta.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

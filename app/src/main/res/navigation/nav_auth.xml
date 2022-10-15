@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/signInScreen">
+
+    <fragment
+        android:id="@+id/signUpScreen"
+        android:name="uz.unidev.timetable.presentation.auth.signup.SignUpScreen"
+        android:label="SignUpScreen"
+        tools:layout="@layout/screen_signup"
+        >
+        <action
+            android:id="@+id/action_signUpScreen_to_signInScreen"
+            app:destination="@id/signInScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInScreen"
+        tools:layout="@layout/screen_signin"
+        android:name="uz.unidev.timetable.presentation.auth.signin.SignInScreen"
+        android:label="SignInScreen" >
+        <action
+            android:id="@+id/action_signInScreen_to_signUpScreen"
+            app:destination="@id/signUpScreen" />
+    </fragment>
+</navigation>
