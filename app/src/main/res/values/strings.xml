@@ -9,4 +9,8 @@
     <string name="log_in">Log In</string>
     <string name="sign_in">Sign In</string>
     <string name="dont_have_an_account">Don\'t have an account?</string>
+    <string name="password_length_condition">Password must not be less than 6 characters</string>
+    <string name="no_internet">No Internet connection</string>
+    <string name="home">Home</string>
+    <string name="enter_full_name">Enter full name</string>
 </resources>

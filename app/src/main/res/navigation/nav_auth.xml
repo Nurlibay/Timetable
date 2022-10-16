@@ -21,7 +21,16 @@
         android:name="uz.unidev.timetable.presentation.auth.signin.SignInScreen"
         android:label="SignInScreen" >
         <action
+            android:id="@+id/action_signInScreen_to_mainContainer"
+            app:destination="@id/mainContainer" />
+        <action
             android:id="@+id/action_signInScreen_to_signUpScreen"
             app:destination="@id/signUpScreen" />
     </fragment>
+    <fragment
+        android:id="@+id/mainContainer"
+        android:name="uz.unidev.timetable.presentation.main.MainContainer"
+        android:label="MainContainer"
+        tools:layout="@layout/container_main"
+        />
 </navigation>

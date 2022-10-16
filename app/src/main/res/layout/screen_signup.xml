@@ -40,7 +40,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_full_name"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="text" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -57,24 +58,27 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_password"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"            android:layout_width="match_parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_standard"
             android:layout_marginBottom="@dimen/margin_middle"
             android:hint="@string/password"
+            app:passwordToggleEnabled="true"
             app:startIconDrawable="@drawable/ic_key">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                />
+                android:inputType="numberPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -106,12 +110,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_sign_up">
 
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/already_have_an_account"
-            android:textSize="18sp" />
+            android:text="@string/already_have_an_account" />
 
         <TextView
             android:id="@+id/tv_sign_in"
@@ -119,9 +121,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_middle"
             android:text="@string/log_in"
-            android:textColor="@color/main_color"
-            android:textSize="18sp" />
+            android:textColor="@color/main_color" />
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/container_auth"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_create_account" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

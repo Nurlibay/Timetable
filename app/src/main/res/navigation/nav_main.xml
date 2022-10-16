@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_main">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/homeScreen">
 
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="uz.unidev.timetable.presentation.main.home.HomeScreen"
+        android:label="HomeScreen"
+        tools:layout="@layout/screen_home" />
 </navigation>
