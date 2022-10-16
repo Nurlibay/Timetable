@@ -10,4 +10,14 @@
         android:name="uz.unidev.timetable.presentation.main.home.HomeScreen"
         android:label="HomeScreen"
         tools:layout="@layout/screen_home" />
+    <fragment
+        android:id="@+id/profileScreen"
+        android:name="uz.unidev.timetable.presentation.main.profile.ProfileScreen"
+        android:label="ProfileScreen"
+        tools:layout="@layout/screen_profile" />
+    <fragment
+        android:id="@+id/teacherScreen"
+        android:name="uz.unidev.timetable.presentation.main.teacher.TeacherScreen"
+        android:label="TeacherScreen"
+        tools:layout="@layout/screen_teacher" />
 </navigation>

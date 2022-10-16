@@ -3,26 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_auth"
-    app:startDestination="@id/signInScreen">
+    app:startDestination="@id/splashScreen">
 
     <fragment
         android:id="@+id/signUpScreen"
         android:name="uz.unidev.timetable.presentation.auth.signup.SignUpScreen"
         android:label="SignUpScreen"
-        tools:layout="@layout/screen_signup"
-        >
+        tools:layout="@layout/screen_signup">
         <action
             android:id="@+id/action_signUpScreen_to_signInScreen"
             app:destination="@id/signInScreen" />
     </fragment>
     <fragment
         android:id="@+id/signInScreen"
-        tools:layout="@layout/screen_signin"
         android:name="uz.unidev.timetable.presentation.auth.signin.SignInScreen"
-        android:label="SignInScreen" >
+        android:label="SignInScreen"
+        tools:layout="@layout/screen_signin">
         <action
             android:id="@+id/action_signInScreen_to_mainContainer"
-            app:destination="@id/mainContainer" />
+            app:destination="@id/mainContainer"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_auth"
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_signInScreen_to_signUpScreen"
             app:destination="@id/signUpScreen" />
@@ -31,6 +34,26 @@
         android:id="@+id/mainContainer"
         android:name="uz.unidev.timetable.presentation.main.MainContainer"
         android:label="MainContainer"
-        tools:layout="@layout/container_main"
-        />
+        tools:layout="@layout/container_main" />
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="uz.unidev.timetable.presentation.splash.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash"
+        >
+        <action
+            android:id="@+id/action_splashScreen_to_signInScreen"
+            app:destination="@id/signInScreen"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_auth"
+            app:popUpToInclusive="true"
+            />
+        <action
+            android:id="@+id/action_splashScreen_to_mainContainer"
+            app:destination="@id/mainContainer"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/nav_auth"
+            app:popUpToInclusive="true"
+            />
+    </fragment>
 </navigation>

@@ -13,4 +13,7 @@
     <string name="no_internet">No Internet connection</string>
     <string name="home">Home</string>
     <string name="enter_full_name">Enter full name</string>
+    <string name="teacher">Teachers</string>
+    <string name="profile">Profile</string>
+    <string name="student_s_timetable">Student\'s timetable</string>
 </resources>

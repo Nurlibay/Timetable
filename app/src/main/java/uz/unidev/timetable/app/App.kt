@@ -10,6 +10,7 @@ import timber.log.Timber
 import uz.unidev.timetable.BuildConfig
 import uz.unidev.timetable.di.dataModule
 import uz.unidev.timetable.di.repositoryModule
+import uz.unidev.timetable.di.sharedPrefModule
 import uz.unidev.timetable.di.viewModelModule
 
 /**
@@ -27,7 +28,7 @@ class App : Application() {
 
         //Koin
         val modules = listOf(
-            dataModule, repositoryModule, viewModelModule
+            dataModule, sharedPrefModule, repositoryModule, viewModelModule
         )
         startKoin {
             androidLogger()
