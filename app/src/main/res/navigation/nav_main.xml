@@ -14,10 +14,20 @@
         android:id="@+id/profileScreen"
         android:name="uz.unidev.timetable.presentation.main.profile.ProfileScreen"
         android:label="ProfileScreen"
-        tools:layout="@layout/screen_profile" />
+        tools:layout="@layout/screen_profile" >
+        <action
+            android:id="@+id/action_profileScreen_to_editProfileScreen"
+            app:destination="@id/editProfileScreen" />
+    </fragment>
     <fragment
         android:id="@+id/teacherScreen"
         android:name="uz.unidev.timetable.presentation.main.teacher.TeacherScreen"
         android:label="TeacherScreen"
         tools:layout="@layout/screen_teacher" />
+    <fragment
+        android:id="@+id/editProfileScreen"
+        android:name="uz.unidev.timetable.presentation.main.profile.edit.EditProfileScreen"
+        android:label="EditProfileScreen"
+        tools:layout="@layout/screen_edit_profile"
+        />
 </navigation>

@@ -41,8 +41,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_standard"
             android:layout_marginBottom="@dimen/margin_middle"
-            android:hint="@string/full_name"
             android:enabled="false"
+            android:hint="@string/full_name"
             app:startIconDrawable="@drawable/ic_account">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -73,18 +73,18 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_password"
+            android:id="@+id/til_phone_number"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:layout_marginTop="@dimen/margin_standard"
             android:layout_marginBottom="@dimen/margin_middle"
+            android:enabled="false"
             android:hint="@string/phone_number"
             app:startIconDrawable="@drawable/ic_phone">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_password"
+                android:id="@+id/et_phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text" />
@@ -92,5 +92,15 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/container_auth" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

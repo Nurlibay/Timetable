@@ -16,7 +16,16 @@ class ProfileHelper(
     fun getProfileData(
         onSuccess: (student: Student) -> Unit,
         onFailure: (msg: String?) -> Unit
-    ){
-        db.collection(Constants.STUDENTS).document()
+    ) {
+        db.collection(Constants.STUDENTS).document(auth.currentUser!!.uid).get()
+            .addOnSuccessListener {
+                val result = it.toObject(Student::class.java)
+                result?.let { student ->
+                    onSuccess.invoke(student)
+                } ?: onFailure.invoke("Student data is empty")
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
     }
 }

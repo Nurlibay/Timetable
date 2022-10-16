@@ -1,9 +1,12 @@
 package uz.unidev.timetable.domain
 
+import uz.unidev.timetable.data.models.Student
 import uz.unidev.timetable.data.source.helper.AuthHelper
+import uz.unidev.timetable.data.source.helper.ProfileHelper
 
 class MainRepositoryImpl(
-    private val authHelper: AuthHelper
+    private val authHelper: AuthHelper,
+    private val profileHelper: ProfileHelper
 ) : MainRepository {
     override fun signIn(
         email: String,
@@ -30,5 +33,12 @@ class MainRepositoryImpl(
         onFailure: (msg: String?) -> Unit
     ) {
         authHelper.addStudentToDb(fullName, onSuccess, onFailure)
+    }
+
+    override fun getProfileData(
+        onSuccess: (student: Student) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        profileHelper.getProfileData(onSuccess, onFailure)
     }
 }
