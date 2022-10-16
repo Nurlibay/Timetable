@@ -19,4 +19,10 @@ interface MainRepository {
         onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     )
+
+    fun addStudentToDb(
+        fullName: String,
+        onSuccess: () -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
 }

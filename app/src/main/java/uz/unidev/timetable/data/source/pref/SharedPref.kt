@@ -1,4 +1,4 @@
-package uz.unidev.timetable.data.source
+package uz.unidev.timetable.data.source.pref
 
 import android.content.Context
 import android.content.SharedPreferences

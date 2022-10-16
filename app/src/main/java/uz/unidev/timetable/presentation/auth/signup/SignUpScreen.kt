@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -51,6 +50,30 @@ class SignUpScreen : Fragment(R.layout.screen_signup) {
                 }
                 ResourceState.SUCCESS -> {
                     setLoading(false)
+                    viewModel.addStudentToDb(binding.etFullName.text.toString())
+                    setupObserverStudentStatus()
+                }
+                ResourceState.ERROR -> {
+                    setLoading(false)
+                    showMessage(it.message.toString())
+                }
+                ResourceState.NETWORK_ERROR -> {
+                    setLoading(false)
+                    showMessage(getString(R.string.no_internet))
+                }
+            }
+        }
+    }
+
+    private fun setupObserverStudentStatus() {
+        viewModel.studentStatus.observe(viewLifecycleOwner) {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    setLoading(true)
+                }
+                ResourceState.SUCCESS -> {
+                    setLoading(false)
+                    showMessage(getString(R.string.student_added_to_db))
                     navController.navigate(SignUpScreenDirections.actionSignUpScreenToSignInScreen())
                 }
                 ResourceState.ERROR -> {
@@ -67,9 +90,7 @@ class SignUpScreen : Fragment(R.layout.screen_signup) {
 
     private fun validate(): Boolean {
         binding.apply {
-            return if (etEmail.text!!.isNotEmpty() && etPassword.text!!.isNotEmpty()
-                && etFullName.text!!.isNotEmpty() && etPassword.length() >= 6
-            ) {
+            return if (etEmail.text!!.isNotEmpty() && etPassword.text!!.isNotEmpty() && etFullName.text!!.isNotEmpty() && etPassword.length() >= 6) {
                 true
             } else if (etPassword.length() < 6) {
                 tilPassword.error = getString(R.string.password_length_condition)
@@ -87,6 +108,7 @@ class SignUpScreen : Fragment(R.layout.screen_signup) {
         binding.apply {
             progressBar.isVisible = isLoading
             etEmail.isEnabled = !isLoading
+            etFullName.isEnabled = !isLoading
             etPassword.isEnabled = !isLoading
         }
     }

@@ -6,8 +6,8 @@ import com.google.firebase.storage.FirebaseStorage
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import uz.unidev.timetable.data.source.AuthHelper
-import uz.unidev.timetable.data.source.SharedPref
+import uz.unidev.timetable.data.source.helper.AuthHelper
+import uz.unidev.timetable.data.source.pref.SharedPref
 import uz.unidev.timetable.domain.MainRepository
 import uz.unidev.timetable.domain.MainRepositoryImpl
 import uz.unidev.timetable.presentation.auth.signin.SignInViewModel

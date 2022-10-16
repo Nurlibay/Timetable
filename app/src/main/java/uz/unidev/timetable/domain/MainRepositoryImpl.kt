@@ -1,6 +1,6 @@
 package uz.unidev.timetable.domain
 
-import uz.unidev.timetable.data.source.AuthHelper
+import uz.unidev.timetable.data.source.helper.AuthHelper
 
 class MainRepositoryImpl(
     private val authHelper: AuthHelper
@@ -22,5 +22,13 @@ class MainRepositoryImpl(
         onFailure: (msg: String?) -> Unit
     ) {
         authHelper.signUp(fullName, email, password, onSuccess, onFailure)
+    }
+
+    override fun addStudentToDb(
+        fullName: String,
+        onSuccess: () -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        authHelper.addStudentToDb(fullName, onSuccess, onFailure)
     }
 }

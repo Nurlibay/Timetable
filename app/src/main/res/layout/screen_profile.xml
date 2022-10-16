@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_edit"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="24dp"
+        android:padding="@dimen/margin_middle"
+        android:src="@drawable/edit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/image_student"
+        android:layout_width="86dp"
+        android:layout_height="86dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/user"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_edit" />
+
+    <LinearLayout
+        android:id="@+id/container_auth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_student">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_full_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_middle"
+            android:hint="@string/full_name"
+            android:enabled="false"
+            app:startIconDrawable="@drawable/ic_account">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_full_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_middle"
+            android:enabled="false"
+            android:hint="@string/email_address"
+            app:startIconDrawable="@drawable/ic_email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textEmailAddress" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:layout_marginTop="@dimen/margin_standard"
+            android:layout_marginBottom="@dimen/margin_middle"
+            android:hint="@string/phone_number"
+            app:startIconDrawable="@drawable/ic_phone">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

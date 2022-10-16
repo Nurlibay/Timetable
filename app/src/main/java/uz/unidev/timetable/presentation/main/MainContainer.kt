@@ -9,7 +9,7 @@ import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.android.ext.android.inject
 import uz.unidev.timetable.R
-import uz.unidev.timetable.data.source.SharedPref
+import uz.unidev.timetable.data.source.pref.SharedPref
 import uz.unidev.timetable.databinding.ContainerMainBinding
 
 /**

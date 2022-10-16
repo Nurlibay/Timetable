@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import uz.unidev.timetable.R
-import uz.unidev.timetable.data.source.SharedPref
+import uz.unidev.timetable.data.source.pref.SharedPref
 
 /**
  *  Created by Nurlibay Koshkinbaev on 16/10/2022 21:56

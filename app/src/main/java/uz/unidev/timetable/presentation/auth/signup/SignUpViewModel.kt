@@ -26,4 +26,19 @@ class SignUpViewModel(
             }
         )
     }
+
+    private var _student: MutableLiveData<Resource<Any?>> = MutableLiveData()
+    val studentStatus: LiveData<Resource<Any?>> get() = _student
+
+    fun addStudentToDb(fullName: String) {
+        _student.value = Resource.loading()
+        mainRepository.addStudentToDb(fullName,
+            {
+            _student.value = Resource.success(null)
+            },
+            {
+                _student.value = Resource.error(it)
+            }
+        )
+    }
 }
