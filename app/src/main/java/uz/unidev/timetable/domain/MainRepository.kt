@@ -2,6 +2,7 @@ package uz.unidev.timetable.domain
 
 import uz.unidev.timetable.data.models.GroupData
 import uz.unidev.timetable.data.models.StudentData
+import uz.unidev.timetable.data.models.WeekData
 
 /**
  *  Created by Nurlibay Koshkinbaev on 16/10/2022 15:31
@@ -36,6 +37,12 @@ interface MainRepository {
 
     fun getGroupData(
         onSuccess: (students: List<GroupData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
+
+    fun getWeekData(
+        groupId: String,
+        onSuccess: (students: List<WeekData>) -> Unit,
         onFailure: (msg: String?) -> Unit
     )
 }

@@ -9,16 +9,16 @@
         android:id="@+id/homeScreen"
         android:name="uz.unidev.timetable.presentation.main.group.GroupScreen"
         android:label="HomeScreen"
-        tools:layout="@layout/screen_home" >
+        tools:layout="@layout/screen_home">
         <action
-            android:id="@+id/action_homeScreen_to_weeksScreen"
-            app:destination="@id/weeksScreen" />
+            android:id="@+id/action_homeScreen_to_weekScreen"
+            app:destination="@id/weekScreen" />
     </fragment>
     <fragment
         android:id="@+id/profileScreen"
         android:name="uz.unidev.timetable.presentation.main.profile.ProfileScreen"
         android:label="ProfileScreen"
-        tools:layout="@layout/screen_profile" >
+        tools:layout="@layout/screen_profile">
         <action
             android:id="@+id/action_profileScreen_to_editProfileScreen"
             app:destination="@id/editProfileScreen" />
@@ -32,30 +32,26 @@
         android:id="@+id/editProfileScreen"
         android:name="uz.unidev.timetable.presentation.main.profile.edit.EditProfileScreen"
         android:label="EditProfileScreen"
-        tools:layout="@layout/screen_edit_profile"
-        />
+        tools:layout="@layout/screen_edit_profile" />
     <fragment
-        android:id="@+id/weeksScreen"
-        android:name="uz.unidev.timetable.presentation.main.weeks.WeeksScreen"
-        android:label="WeeksScreen" >
+        android:id="@+id/weekScreen"
+        android:name="uz.unidev.timetable.presentation.main.weeks.WeekScreen"
+        android:label="WeekScreen"
+        tools:layout="@layout/screen_week">
         <argument
             android:name="group_data"
             app:argType="uz.unidev.timetable.data.models.GroupData" />
+        <action
+            android:id="@+id/action_weekScreen_to_daysScreen"
+            app:destination="@id/daysScreen" />
     </fragment>
     <fragment
-        android:id="@+id/week2Screen"
-        android:name="uz.unidev.timetable.presentation.main.weeks.week2.Week2Screen"
-        android:label="Week2Screen" />
-    <fragment
-        android:id="@+id/week1Screen"
-        android:name="uz.unidev.timetable.presentation.main.weeks.week1.Week1Screen"
-        android:label="Week1Screen" />
-    <fragment
-        android:id="@+id/week3Screen"
-        android:name="uz.unidev.timetable.presentation.main.weeks.week3.Week3Screen"
-        android:label="Week3Screen" />
-    <fragment
-        android:id="@+id/week4Screen"
-        android:name="uz.unidev.timetable.presentation.main.weeks.week4.Week4Screen"
-        android:label="Week4Screen" />
+        android:id="@+id/daysScreen"
+        android:name="uz.unidev.timetable.presentation.main.days.DaysScreen"
+        android:label="DaysScreen"
+        tools:layout="@layout/screen_days" >
+        <argument
+            android:name="week_data"
+            app:argType="uz.unidev.timetable.data.models.WeekData" />
+    </fragment>
 </navigation>

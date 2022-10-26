@@ -1,14 +1,16 @@
-package uz.unidev.timetable.presentation.main.group
+package uz.unidev.timetable.presentation.main.weeks
 
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenHomeBinding
+import uz.unidev.timetable.databinding.ScreenWeekBinding
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider
 import uz.unidev.timetable.utils.extensions.showMessage
@@ -17,32 +19,37 @@ import uz.unidev.timetable.utils.extensions.showMessage
  *  Created by Nurlibay Koshkinbaev on 16/10/2022 16:10
  */
 
-class GroupScreen: Fragment(R.layout.screen_home) {
+class WeekScreen: Fragment(R.layout.screen_week) {
 
-    private val binding: ScreenHomeBinding by viewBinding()
-    private val viewModel: GroupViewModel by viewModel()
+    private val binding: ScreenWeekBinding by viewBinding()
+    private val viewModel: WeekViewModel by viewModel()
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
-    private val adapter by lazy { GroupAdapter() }
+    private val adapter by lazy { WeekAdapter() }
+    private val args: WeekScreenArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
-        viewModel.getGroupData()
+        viewModel.getGroupData(args.groupData.id)
         setupObserver()
+        binding.iconBack.setOnClickListener {
+            navController.navigateUp()
+        }
+        binding.tvGroupNumber.text = args.groupData.name
     }
 
     private fun setupAdapter() {
         binding.apply {
-            rvGroups.adapter = adapter
-            rvGroups.addVerticalDivider(requireContext())
+            rvWeeks.adapter = adapter
+            rvWeeks.addVerticalDivider(requireContext())
         }
         adapter.setOnItemClickListener {
-            navController.navigate(GroupScreenDirections.actionHomeScreenToWeekScreen(it))
+            navController.navigate(WeekScreenDirections.actionWeekScreenToDaysScreen(it))
         }
     }
 
     private fun setupObserver() {
-        viewModel.group.observe(viewLifecycleOwner) {
+        viewModel.week.observe(viewLifecycleOwner) {
             when (it.status) {
                 ResourceState.LOADING -> {
                     setLoading(true)
@@ -50,8 +57,8 @@ class GroupScreen: Fragment(R.layout.screen_home) {
                 ResourceState.SUCCESS -> {
                     setLoading(false)
                     binding.apply {
-                        it.data?.let { students ->
-                            adapter.submitList(students)
+                        it.data?.let { weeks ->
+                            adapter.submitList(weeks)
                         }
                     }
                 }

@@ -29,17 +29,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_start_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_middle"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:id="@+id/tv_group_number"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@id/icon_back"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="010101" />
+                tools:text="03.10.22 - " />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_end_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_start_date"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="09.10.22" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -54,6 +66,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar"
         app:tabBackground="@color/white"
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
         app:tabIndicatorColor="@color/main_color"
         app:tabSelectedTextColor="@color/main_color"
         app:tabTextColor="@color/main_color" />

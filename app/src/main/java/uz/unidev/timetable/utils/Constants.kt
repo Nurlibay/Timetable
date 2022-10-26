@@ -5,4 +5,6 @@ object Constants {
     const val SHARED_PREFS = "shared_prefs"
     const val CLICK_TIME_OUT = 50L
     const val GROUPS = "groups"
+    const val TIMETABLE = "timetable"
+    const val WEEKS = "weeks"
 }
