@@ -24,8 +24,17 @@ class GroupAdapter : ListAdapter<GroupData, GroupAdapter.GroupViewHolder>(GroupI
                 tvGroupNumber.text = item.name
                 tvCourseNumber.text = item.number.toString()
                 tvSmena.text = "(${item.smena})"
+
+                root.setOnClickListener {
+                    itemClick.invoke(item)
+                }
             }
         }
+    }
+
+    private var itemClick: (groupData: GroupData) -> Unit = {}
+    fun setOnItemClickListener(block: (GroupData) -> Unit){
+        itemClick = block
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GroupViewHolder {

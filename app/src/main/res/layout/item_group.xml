@@ -3,7 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    tools:ignore="UnusedAttribute">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/image_group"
@@ -33,10 +37,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_standard"
         android:layout_marginTop="@dimen/margin_middle"
+        android:text="@string/course"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/image_group"
-        app:layout_constraintTop_toBottomOf="@id/tv_group_number"
-        android:text="@string/course" />
+        app:layout_constraintTop_toBottomOf="@id/tv_group_number" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_course_number"

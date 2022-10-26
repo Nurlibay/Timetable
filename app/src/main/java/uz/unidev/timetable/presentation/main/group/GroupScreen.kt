@@ -36,6 +36,9 @@ class GroupScreen: Fragment(R.layout.screen_home) {
             rvGroups.adapter = adapter
             rvGroups.addVerticalDivider(requireContext())
         }
+        adapter.setOnItemClickListener {
+            navController.navigate(GroupScreenDirections.actionHomeScreenToWeeksScreen(it))
+        }
     }
 
     private fun setupObserver() {
