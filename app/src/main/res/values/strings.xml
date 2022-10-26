@@ -21,4 +21,6 @@
     <string name="edit_profile_image">Edit profile image</string>
     <string name="tvName">Full Name</string>
     <string name="student_added_to_db">Student added to remote database</string>
+    <string name="groups">Groups</string>
+    <string name="course">Course:</string>
 </resources>

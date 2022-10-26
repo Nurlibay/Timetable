@@ -3,7 +3,7 @@ package uz.unidev.timetable.presentation.main.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import uz.unidev.timetable.data.models.Student
+import uz.unidev.timetable.data.models.StudentData
 import uz.unidev.timetable.domain.MainRepository
 import uz.unidev.timetable.utils.Resource
 
@@ -14,8 +14,8 @@ import uz.unidev.timetable.utils.Resource
 class ProfileViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
-    private var mutableProfile: MutableLiveData<Resource<Student>> = MutableLiveData()
-    val profile: LiveData<Resource<Student>> get() = mutableProfile
+    private var mutableProfile: MutableLiveData<Resource<StudentData>> = MutableLiveData()
+    val profile: LiveData<Resource<StudentData>> get() = mutableProfile
 
     fun getProfileData() {
         mutableProfile.value = Resource.loading()

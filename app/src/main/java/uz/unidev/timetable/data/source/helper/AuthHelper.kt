@@ -2,7 +2,7 @@ package uz.unidev.timetable.data.source.helper
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import uz.unidev.timetable.data.models.Student
+import uz.unidev.timetable.data.models.StudentData
 import uz.unidev.timetable.utils.Constants
 
 /**
@@ -46,8 +46,8 @@ class AuthHelper(
     }
 
     fun addStudentToDb(fullName: String, onSuccess: () -> Unit, onFailure: (msg: String?) -> Unit) {
-        val student = Student(auth.currentUser!!.uid, auth.currentUser!!.email!!, fullName, "", "")
-        db.collection(Constants.STUDENTS).document(student.id).set(student)
+        val studentData = StudentData(auth.currentUser!!.uid, auth.currentUser!!.email!!, fullName, "", "")
+        db.collection(Constants.STUDENTS).document(studentData.id).set(studentData)
             .addOnSuccessListener {
                 onSuccess.invoke()
             }

@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.profile.edit
+package uz.unidev.timetable.presentation.main.group
 
 import android.os.Bundle
 import android.view.View
@@ -8,36 +8,38 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
-import uz.unidev.timetable.databinding.ScreenEditProfileBinding
+import uz.unidev.timetable.databinding.ScreenHomeBinding
 import uz.unidev.timetable.utils.ResourceState
+import uz.unidev.timetable.utils.extensions.addVerticalDivider
 import uz.unidev.timetable.utils.extensions.showMessage
 
 /**
- *  Created by Nurlibay Koshkinbaev on 16/10/2022 23:09
+ *  Created by Nurlibay Koshkinbaev on 16/10/2022 16:10
  */
 
-class EditProfileScreen: Fragment(R.layout.screen_edit_profile) {
+class GroupScreen: Fragment(R.layout.screen_home) {
 
-    private val binding: ScreenEditProfileBinding by viewBinding()
-    private val viewModel: EditProfileViewModel by viewModel()
+    private val binding: ScreenHomeBinding by viewBinding()
+    private val viewModel: GroupViewModel by viewModel()
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
+    private val adapter by lazy { GroupAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getCurrentStudentData()
+        setupAdapter()
+        viewModel.getGroupData()
         setupObserver()
-        binding.apply {
-            btnCancel.setOnClickListener {
-                navController.navigateUp()
-            }
-            containerImage.setOnClickListener {
+    }
 
-            }
+    private fun setupAdapter() {
+        binding.apply {
+            rvGroups.adapter = adapter
+            rvGroups.addVerticalDivider(requireContext())
         }
     }
 
     private fun setupObserver() {
-        viewModel.studentData.observe(viewLifecycleOwner) {
+        viewModel.group.observe(viewLifecycleOwner) {
             when (it.status) {
                 ResourceState.LOADING -> {
                     setLoading(true)
@@ -45,9 +47,8 @@ class EditProfileScreen: Fragment(R.layout.screen_edit_profile) {
                 ResourceState.SUCCESS -> {
                     setLoading(false)
                     binding.apply {
-                        it.data?.let { student ->
-                            etFullName.setText(student.fullName)
-                            etEmail.setText(student.email)
+                        it.data?.let { students ->
+                            adapter.submitList(students)
                         }
                     }
                 }

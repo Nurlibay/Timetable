@@ -110,4 +110,23 @@ dependencies {
     /**  View binding kirich */
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.6'
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6'
+
+    //Glide Image Loading
+    implementation 'com.github.bumptech.glide:glide:4.14.2'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
+
+    //ImagePicker
+    implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    //Runtime Permissions
+    implementation 'com.karumi:dexter:6.2.3'
+
+    //Corbind for working with UI
+    def corbind_version = "1.5.5"
+    implementation "ru.ldralighieri.corbind:corbind:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-material:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-appcompat:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-lifecycle:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-recyclerview:$corbind_version"
+    implementation "ru.ldralighieri.corbind:corbind-viewpager2:$corbind_version"
 }

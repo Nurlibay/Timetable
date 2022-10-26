@@ -21,7 +21,7 @@ class MainContainer : Fragment(R.layout.container_main) {
     private val sharedPref: SharedPref by inject()
     private val binding: ContainerMainBinding by viewBinding()
     private lateinit var navController: NavController
-
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedPref.isSigned = true

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/image_group"
+        android:layout_width="54dp"
+        android:layout_height="54dp"
+        android:layout_margin="@dimen/margin_middle"
+        android:src="@drawable/group_image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_group_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/image_group"
+        app:layout_constraintTop_toTopOf="@id/image_group"
+        tools:text="010101" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_middle"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/image_group"
+        app:layout_constraintTop_toBottomOf="@id/tv_group_number"
+        android:text="@string/course" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_course_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="@dimen/margin_middle"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/tv_course"
+        app:layout_constraintTop_toBottomOf="@id/tv_group_number"
+        tools:text="3" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_smena"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="@dimen/margin_middle"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@id/tv_course_number"
+        app:layout_constraintTop_toBottomOf="@id/tv_group_number"
+        tools:text="(дневная)" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

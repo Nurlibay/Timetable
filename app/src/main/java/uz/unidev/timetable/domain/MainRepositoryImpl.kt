@@ -1,12 +1,15 @@
 package uz.unidev.timetable.domain
 
-import uz.unidev.timetable.data.models.Student
+import uz.unidev.timetable.data.models.GroupData
+import uz.unidev.timetable.data.models.StudentData
 import uz.unidev.timetable.data.source.helper.AuthHelper
+import uz.unidev.timetable.data.source.helper.GroupHelper
 import uz.unidev.timetable.data.source.helper.ProfileHelper
 
 class MainRepositoryImpl(
     private val authHelper: AuthHelper,
-    private val profileHelper: ProfileHelper
+    private val profileHelper: ProfileHelper,
+    private val groupHelper: GroupHelper
 ) : MainRepository {
     override fun signIn(
         email: String,
@@ -36,9 +39,16 @@ class MainRepositoryImpl(
     }
 
     override fun getProfileData(
-        onSuccess: (student: Student) -> Unit,
+        onSuccess: (studentData: StudentData) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
         profileHelper.getProfileData(onSuccess, onFailure)
+    }
+
+    override fun getGroupData(
+        onSuccess: (students: List<GroupData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        groupHelper.getGroupData(onSuccess, onFailure)
     }
 }

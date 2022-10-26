@@ -2,7 +2,7 @@ package uz.unidev.timetable.data.source.helper
 
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import uz.unidev.timetable.data.models.Student
+import uz.unidev.timetable.data.models.StudentData
 import uz.unidev.timetable.utils.Constants
 
 /**
@@ -14,12 +14,12 @@ class ProfileHelper(
     private val db: FirebaseFirestore
 ) {
     fun getProfileData(
-        onSuccess: (student: Student) -> Unit,
+        onSuccess: (studentData: StudentData) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
         db.collection(Constants.STUDENTS).document(auth.currentUser!!.uid).get()
             .addOnSuccessListener {
-                val result = it.toObject(Student::class.java)
+                val result = it.toObject(StudentData::class.java)
                 result?.let { student ->
                     onSuccess.invoke(student)
                 } ?: onFailure.invoke("Student data is empty")
