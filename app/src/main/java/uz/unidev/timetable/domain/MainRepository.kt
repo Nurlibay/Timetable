@@ -1,6 +1,7 @@
 package uz.unidev.timetable.domain
 
 import uz.unidev.timetable.data.models.GroupData
+import uz.unidev.timetable.data.models.LessonData
 import uz.unidev.timetable.data.models.StudentData
 import uz.unidev.timetable.data.models.WeekData
 
@@ -43,6 +44,14 @@ interface MainRepository {
     fun getWeekData(
         groupId: String,
         onSuccess: (students: List<WeekData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
+
+    fun getLessonData(
+        groupId: String,
+        weekName: String,
+        dayName: String,
+        onSuccess: (groups: List<LessonData>) -> Unit,
         onFailure: (msg: String?) -> Unit
     )
 }

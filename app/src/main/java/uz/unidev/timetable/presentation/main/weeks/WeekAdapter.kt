@@ -22,7 +22,7 @@ class WeekAdapter : ListAdapter<WeekData, WeekAdapter.WeekViewHolder>(WeekItemCa
             val item = getItem(absoluteAdapterPosition)
             binding.apply {
                 tvWeekName.text = item.name
-                tvStartTime.text = item.startDate + " - "
+                tvStartTime.text = item.startDate
                 tvEndTime.text = item.endDate
 
                 root.setOnClickListener {

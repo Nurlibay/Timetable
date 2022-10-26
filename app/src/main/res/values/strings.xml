@@ -23,4 +23,5 @@
     <string name="student_added_to_db">Student added to remote database</string>
     <string name="groups">Groups</string>
     <string name="course">Course:</string>
+    <string name="no_lesson">On this day, there are no lessons</string>
 </resources>

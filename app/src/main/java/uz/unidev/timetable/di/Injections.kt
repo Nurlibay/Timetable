@@ -6,16 +6,14 @@ import com.google.firebase.storage.FirebaseStorage
 import org.koin.android.ext.koin.androidApplication
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
-import uz.unidev.timetable.data.source.helper.AuthHelper
-import uz.unidev.timetable.data.source.helper.GroupHelper
-import uz.unidev.timetable.data.source.helper.ProfileHelper
-import uz.unidev.timetable.data.source.helper.WeekHelper
+import uz.unidev.timetable.data.source.helper.*
 import uz.unidev.timetable.data.source.pref.SharedPref
 import uz.unidev.timetable.domain.MainRepository
 import uz.unidev.timetable.domain.MainRepositoryImpl
 import uz.unidev.timetable.presentation.auth.signin.SignInViewModel
 import uz.unidev.timetable.presentation.auth.signup.SignUpViewModel
 import uz.unidev.timetable.presentation.main.group.GroupViewModel
+import uz.unidev.timetable.presentation.main.lessons.lesson.LessonViewModel
 import uz.unidev.timetable.presentation.main.profile.ProfileViewModel
 import uz.unidev.timetable.presentation.main.profile.edit.EditProfileViewModel
 import uz.unidev.timetable.presentation.main.weeks.WeekViewModel
@@ -28,6 +26,7 @@ val dataModule = module {
     single { ProfileHelper(get(), get()) }
     single { GroupHelper(get()) }
     single { WeekHelper(get()) }
+    single { LessonHelper(get()) }
 }
 
 val sharedPrefModule = module {
@@ -35,7 +34,7 @@ val sharedPrefModule = module {
 }
 
 val repositoryModule = module {
-    single<MainRepository> { MainRepositoryImpl(get(), get(), get(), get()) }
+    single<MainRepository> { MainRepositoryImpl(get(), get(), get(), get(), get()) }
 }
 
 val viewModelModule = module {
@@ -45,4 +44,5 @@ val viewModelModule = module {
     viewModel { EditProfileViewModel(get()) }
     viewModel { GroupViewModel(get()) }
     viewModel { WeekViewModel(get()) }
+    viewModel { LessonViewModel(get()) }
 }

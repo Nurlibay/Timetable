@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.days
+package uz.unidev.timetable.presentation.main.lessons
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import timber.log.Timber
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenDaysBinding
 
@@ -19,12 +20,13 @@ class DaysScreen : Fragment(R.layout.screen_days) {
 
     private val binding: ScreenDaysBinding by viewBinding()
     private val args: DaysScreenArgs by navArgs()
+    private val navController by lazy { findNavController() }
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            pagerMain.adapter = DaysViewPagerAdapter(requireActivity())
+            pagerMain.adapter = DaysViewPagerAdapter(requireActivity(), args.groupId, args.weekData.id)
             val list = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
             TabLayoutMediator(binding.tabLayout, binding.pagerMain) { tab, pos ->
                 tab.text = list[pos]
@@ -36,5 +38,6 @@ class DaysScreen : Fragment(R.layout.screen_days) {
             tvStartDate.text = args.weekData.startDate + " - "
             tvEndDate.text = args.weekData.endDate
         }
+        //navController.navigate(DaysScreenDirections.actionDaysScreenToLessonScreen(args.groupId, args.weekData.endDate))
     }
 }

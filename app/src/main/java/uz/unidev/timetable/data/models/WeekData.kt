@@ -9,6 +9,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class WeekData(
+    var id: String = "",
     var name: String = "",
     var startDate: String = "",
     var endDate: String = "",

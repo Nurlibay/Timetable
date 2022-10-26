@@ -44,7 +44,7 @@ class WeekScreen: Fragment(R.layout.screen_week) {
             rvWeeks.addVerticalDivider(requireContext())
         }
         adapter.setOnItemClickListener {
-            navController.navigate(WeekScreenDirections.actionWeekScreenToDaysScreen(it))
+            navController.navigate(WeekScreenDirections.actionWeekScreenToDaysScreen(it, args.groupData.id))
         }
     }
 

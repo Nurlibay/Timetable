@@ -47,11 +47,34 @@
     </fragment>
     <fragment
         android:id="@+id/daysScreen"
-        android:name="uz.unidev.timetable.presentation.main.days.DaysScreen"
+        android:name="uz.unidev.timetable.presentation.main.lessons.DaysScreen"
         android:label="DaysScreen"
-        tools:layout="@layout/screen_days" >
+        tools:layout="@layout/screen_days"
+        >
+        <argument
+            android:name="groupId"
+            app:argType="string"
+            android:defaultValue='""' />
         <argument
             android:name="week_data"
             app:argType="uz.unidev.timetable.data.models.WeekData" />
+        <action
+            android:id="@+id/action_daysScreen_to_lessonScreen"
+            app:destination="@id/lessonScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/lessonScreen"
+        android:name="uz.unidev.timetable.presentation.main.lessons.lesson.LessonScreen"
+        android:label="LessonScreen"
+        tools:layout="@layout/screen_lesson"
+        >
+        <argument
+            android:name="groupId"
+            app:argType="string"
+            android:defaultValue='""' />
+        <argument
+            android:name="weekId"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
 </navigation>
