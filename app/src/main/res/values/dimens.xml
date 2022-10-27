@@ -4,4 +4,5 @@
     <dimen name="margin_middle">8dp</dimen>
     <dimen name="text_size_toolbar">20sp</dimen>
     <dimen name="text_size_standard">18sp</dimen>
+    <dimen name="item_list_horizontal_margin">16dp</dimen>
 </resources>

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.GroupData
 import uz.unidev.timetable.databinding.ItemGroupBinding
+import uz.unidev.timetable.utils.extensions.coloredString
 
 /**
  *  Created by Nurlibay Koshkinbaev on 26/10/2022 14:33
@@ -16,12 +17,14 @@ import uz.unidev.timetable.databinding.ItemGroupBinding
 
 class GroupAdapter : ListAdapter<GroupData, GroupAdapter.GroupViewHolder>(GroupItemCallBack) {
 
+    var query: String? = null
+
     inner class GroupViewHolder(private val binding: ItemGroupBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind() {
             val item = getItem(absoluteAdapterPosition)
             binding.apply {
-                tvGroupNumber.text = item.name
+                tvGroupNumber.text = item.name.coloredString(query)
                 tvCourseNumber.text = item.number.toString()
                 tvSmena.text = "(${item.smena})"
 

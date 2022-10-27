@@ -28,4 +28,20 @@ class GroupViewModel(
             }
         )
     }
+
+    private var mutableSearch: MutableLiveData<Resource<List<GroupData>>> = MutableLiveData()
+    val search: LiveData<Resource<List<GroupData>>> get() = mutableSearch
+
+    fun getFilteredGroups(query: String) {
+        mutableSearch.value = Resource.loading()
+        mainRepository.getFilteredGroups(
+            query,
+            {
+                mutableSearch.value = Resource.success(it)
+            },
+            {
+                mutableSearch.value = Resource.error(it)
+            }
+        )
+    }
 }

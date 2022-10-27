@@ -24,4 +24,9 @@
     <string name="groups">Groups</string>
     <string name="course">Course:</string>
     <string name="no_lesson">On this day, there are no lessons</string>
+    <string name="search">Search</string>
+    <string name="search_title">Search</string>
+    <string name="search_group_by_name">Search group by name</string>
+    <string name="search_group">Search group</string>
+    <string name="no_search_results_found">Searched group not found</string>
 </resources>

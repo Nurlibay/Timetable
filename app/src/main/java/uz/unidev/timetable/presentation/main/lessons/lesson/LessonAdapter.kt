@@ -25,6 +25,7 @@ class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(Le
                 tvEndTime.text = item.endTime
                 tvRoomNumber.text = item.room
                 tvTeacherName.text = item.teacher
+                tvLessonName.text = item.name
             }
         }
     }

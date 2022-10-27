@@ -47,7 +47,6 @@
         android:id="@+id/tv_end_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="4dp"
         android:layout_marginTop="@dimen/margin_middle"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/tv_start_time"

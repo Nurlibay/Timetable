@@ -41,6 +41,12 @@ interface MainRepository {
         onFailure: (msg: String?) -> Unit
     )
 
+    fun getFilteredGroups(
+        query: String?,
+        onSuccess: (students: List<GroupData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
+
     fun getWeekData(
         groupId: String,
         onSuccess: (students: List<WeekData>) -> Unit,
@@ -54,4 +60,6 @@ interface MainRepository {
         onSuccess: (groups: List<LessonData>) -> Unit,
         onFailure: (msg: String?) -> Unit
     )
+
+
 }

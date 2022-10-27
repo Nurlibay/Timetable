@@ -54,6 +54,14 @@ class MainRepositoryImpl(
         groupHelper.getGroupData(onSuccess, onFailure)
     }
 
+    override fun getFilteredGroups(
+        query: String?,
+        onSuccess: (students: List<GroupData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        groupHelper.getFilteredGroups(query, onSuccess, onFailure)
+    }
+
     override fun getWeekData(
         groupId: String,
         onSuccess: (students: List<WeekData>) -> Unit,

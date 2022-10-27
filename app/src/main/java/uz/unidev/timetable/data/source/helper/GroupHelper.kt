@@ -27,4 +27,27 @@ class GroupHelper(
                 onFailure.invoke(it.localizedMessage)
             }
     }
+
+    fun getFilteredGroups(
+        query: String?,
+        onSuccess: (groups: List<GroupData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        db.collection(Constants.GROUPS).get()
+            .addOnSuccessListener {
+                val groups = it.documents.map { doc ->
+                    doc.toObject(GroupData::class.java)!!
+                }
+                val filteredGroups = arrayListOf<GroupData>()
+                groups.forEach { groupData ->
+                    if (groupData.name.contains(query!!)) {
+                        filteredGroups.add(groupData)
+                    }
+                }
+                onSuccess.invoke(filteredGroups)
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
 }
