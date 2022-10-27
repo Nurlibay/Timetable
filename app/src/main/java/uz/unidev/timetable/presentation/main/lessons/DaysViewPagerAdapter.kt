@@ -19,12 +19,12 @@ class DaysViewPagerAdapter(
     override fun getItemCount() = 7
 
     override fun createFragment(position: Int): Fragment {
-        val f1 = LessonScreen()
+        val lessonScreen = LessonScreen()
         val args = Bundle()
         args.putInt("pos", position)
         args.putString("group_id", groupId)
         args.putString("week_id", weekId)
-        f1.arguments = args
-        return f1
+        lessonScreen.arguments = args
+        return lessonScreen
     }
 }
