@@ -13,7 +13,7 @@
     <string name="no_internet">No Internet connection</string>
     <string name="home">Home</string>
     <string name="enter_full_name">Enter full name</string>
-    <string name="teacher">Teachers</string>
+    <string name="teacher">Teacher</string>
     <string name="profile">Profile</string>
     <string name="student_s_timetable">Student\'s timetable</string>
     <string name="phone_number">Phone Number</string>
@@ -22,7 +22,7 @@
     <string name="tvName">Full Name</string>
     <string name="student_added_to_db">Student added to remote database</string>
     <string name="groups">Groups</string>
-    <string name="course">Course:</string>
+    <string name="course">Courses</string>
     <string name="no_lesson">On this day, there are no lessons</string>
     <string name="search">Search</string>
     <string name="search_title">Search</string>
@@ -30,4 +30,21 @@
     <string name="search_group">Search group</string>
     <string name="no_search_results_found">Searched group not found</string>
     <string name="add_lesson">Add lesson</string>
+    <string name="lesson_name">Lesson name</string>
+    <string name="room">Cabinet</string>
+    <string name="day">Day</string>
+    <string name="timetable">Timetable</string>
+    <string name="teachers">Teachers</string>
+    <string name="search_course">Search course</string>
+
+    <string-array name="days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
 </resources>

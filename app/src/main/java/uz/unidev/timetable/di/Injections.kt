@@ -12,7 +12,7 @@ import uz.unidev.timetable.domain.MainRepository
 import uz.unidev.timetable.domain.MainRepositoryImpl
 import uz.unidev.timetable.presentation.auth.signin.SignInViewModel
 import uz.unidev.timetable.presentation.auth.signup.SignUpViewModel
-import uz.unidev.timetable.presentation.main.group.GroupViewModel
+import uz.unidev.timetable.presentation.main.courses.CoursesViewModel
 import uz.unidev.timetable.presentation.main.lessons.lesson.LessonViewModel
 import uz.unidev.timetable.presentation.main.profile.ProfileViewModel
 import uz.unidev.timetable.presentation.main.profile.edit.EditProfileViewModel
@@ -42,7 +42,7 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
     viewModel { EditProfileViewModel(get()) }
-    viewModel { GroupViewModel(get()) }
+    viewModel { CoursesViewModel(get()) }
     viewModel { WeekViewModel(get()) }
     viewModel { LessonViewModel(get()) }
 }

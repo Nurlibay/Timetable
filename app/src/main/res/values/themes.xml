@@ -14,4 +14,18 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="TextInputLayoutDropDown" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">#A3000000</item>
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxBackgroundColor">@color/main_color</item>
+        <item name="android:textColorHint">@color/white</item>
+        <item name="startIconTint">@color/main_color</item>
+        <item name="endIconTint">#A3000000</item>
+        <item name="hintTextColor">#A3000000</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/margin_middle</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/margin_middle</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/margin_middle</item>
+        <item name="boxCornerRadiusTopStart">@dimen/margin_middle</item>
+    </style>
+
 </resources>

@@ -1,15 +1,11 @@
 package uz.unidev.timetable.presentation.main.lessons.lesson
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenLessonBinding
 import uz.unidev.timetable.utils.Constants
@@ -27,26 +23,36 @@ class LessonScreen : Fragment(R.layout.screen_lesson) {
     private val viewModel: LessonViewModel by viewModel()
     private val adapter by lazy { LessonAdapter() }
 
+    private var groupId: String = ""
+    private var weekId: String = ""
+    private var pos: Int = 0
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initArgs()
         setupAdapter()
-        Timber.tag("gruppa").d(requireArguments().getString("group_id", ""))
+    }
+
+    private fun initArgs() {
+        groupId = requireArguments().getString("group_id") ?: ""
+        weekId = requireArguments().getString("week_id") ?: ""
+        pos = requireArguments().getInt("pos")
     }
 
     override fun onResume() {
         super.onResume()
-        binding.apply {
-            when (requireArguments().getInt("pos")) {
-                0 -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.MONDAY)
-                1 -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.TUESDAY)
-                2 -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.WEDNESDAY)
-                3 -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.THURSDAY)
-                4 -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.FRIDAY)
-                5 -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.SATURDAY)
-                else -> viewModel.getLessonData(requireArguments().getString("group_id")!!, requireArguments().getString("week_id")!!, Constants.SUNDAY)
-            }
-            setupObserver()
-        }
+//        binding.apply {
+//            when (pos) {
+//                0 -> viewModel.getLessonData(groupId, weekId, Constants.MONDAY)
+//                1 -> viewModel.getLessonData(groupId, weekId, Constants.TUESDAY)
+//                2 -> viewModel.getLessonData(groupId, weekId, Constants.WEDNESDAY)
+//                3 -> viewModel.getLessonData(groupId, weekId, Constants.THURSDAY)
+//                4 -> viewModel.getLessonData(groupId, weekId, Constants.FRIDAY)
+//                5 -> viewModel.getLessonData(groupId, weekId, Constants.SATURDAY)
+//                else -> viewModel.getLessonData(groupId, weekId, Constants.SUNDAY)
+//            }
+//            setupObserver()
+//        }
     }
 
     private fun setupAdapter() {

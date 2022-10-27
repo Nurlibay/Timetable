@@ -21,7 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_standard"
-                android:text="@string/groups"
+                android:text="@string/course"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -48,8 +48,9 @@
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="@string/search_group"
-            android:singleLine="true" />
+            android:hint="@string/search_course"
+            android:singleLine="true"
+            />
 
     </com.google.android.material.textfield.TextInputLayout>
 

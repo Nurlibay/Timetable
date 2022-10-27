@@ -3,17 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_main"
-    app:startDestination="@id/homeScreen">
+    app:startDestination="@id/timetableScreen">
 
     <fragment
-        android:id="@+id/homeScreen"
-        android:name="uz.unidev.timetable.presentation.main.group.GroupScreen"
+        android:id="@+id/coursesScreen"
+        android:name="uz.unidev.timetable.presentation.main.courses.CoursesScreen"
         android:label="HomeScreen"
-        tools:layout="@layout/screen_home">
-        <action
-            android:id="@+id/action_homeScreen_to_weekScreen"
-            app:destination="@id/weekScreen" />
-    </fragment>
+        tools:layout="@layout/screen_courses" />
     <fragment
         android:id="@+id/profileScreen"
         android:name="uz.unidev.timetable.presentation.main.profile.ProfileScreen"
@@ -34,30 +30,10 @@
         android:label="EditProfileScreen"
         tools:layout="@layout/screen_edit_profile" />
     <fragment
-        android:id="@+id/weekScreen"
-        android:name="uz.unidev.timetable.presentation.main.weeks.WeekScreen"
-        android:label="WeekScreen"
-        tools:layout="@layout/screen_week">
-        <argument
-            android:name="group_data"
-            app:argType="uz.unidev.timetable.data.models.GroupData" />
-        <action
-            android:id="@+id/action_weekScreen_to_daysScreen"
-            app:destination="@id/daysScreen" />
-    </fragment>
-    <fragment
-        android:id="@+id/daysScreen"
-        android:name="uz.unidev.timetable.presentation.main.lessons.DaysScreen"
+        android:id="@+id/timetableScreen"
+        android:name="uz.unidev.timetable.presentation.main.lessons.TimetableScreen"
         android:label="DaysScreen"
-        tools:layout="@layout/screen_days"
-        >
-        <argument
-            android:name="groupId"
-            app:argType="string"
-            android:defaultValue='""' />
-        <argument
-            android:name="week_data"
-            app:argType="uz.unidev.timetable.data.models.WeekData" />
+        tools:layout="@layout/screen_timetable">
         <action
             android:id="@+id/action_daysScreen_to_lessonScreen"
             app:destination="@id/lessonScreen" />
@@ -66,15 +42,22 @@
         android:id="@+id/lessonScreen"
         android:name="uz.unidev.timetable.presentation.main.lessons.lesson.LessonScreen"
         android:label="LessonScreen"
-        tools:layout="@layout/screen_lesson"
-        >
+        tools:layout="@layout/screen_lesson">
         <argument
             android:name="groupId"
-            app:argType="string"
-            android:defaultValue='""' />
+            android:defaultValue='""'
+            app:argType="string" />
         <argument
             android:name="weekId"
-            app:argType="string"
-            android:defaultValue='""' />
+            android:defaultValue='""'
+            app:argType="string" />
     </fragment>
+    <fragment
+        android:id="@+id/addLessonScreen"
+        android:name="uz.unidev.timetable.presentation.main.lessons.addLesson.AddLessonScreen"
+        android:label="AddLessonScreen"
+        tools:layout="@layout/screen_add_lesson" />
+    <action
+        android:id="@+id/action_global_addLessonScreen"
+        app:destination="@id/addLessonScreen" />
 </navigation>

@@ -11,9 +11,7 @@ import uz.unidev.timetable.presentation.main.lessons.lesson.LessonScreen
  */
 
 class DaysViewPagerAdapter(
-    fa: FragmentActivity,
-    private val groupId: String,
-    private val weekId: String
+    fa: FragmentActivity
 ) : FragmentStateAdapter(fa) {
 
     override fun getItemCount() = 7
@@ -22,8 +20,6 @@ class DaysViewPagerAdapter(
         val lessonScreen = LessonScreen()
         val args = Bundle()
         args.putInt("pos", position)
-        args.putString("group_id", groupId)
-        args.putString("week_id", weekId)
         lessonScreen.arguments = args
         return lessonScreen
     }

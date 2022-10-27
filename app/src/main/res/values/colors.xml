@@ -10,17 +10,4 @@
     <color name="main_color">#07B464</color>
     <color name="icon_color">#192528</color>
 
-    <color name="material_light_primary_text">#DE000000</color>
-    <color name="material_light_hint_text">#61000000</color>
-    <color name="material_light_active_icon">#8A000000</color>
-    <color name="material_ripple_light">#1F000000</color>
-    <color name="divider_color">#1F000000</color>
-    <color name="active_icon_color">#8A000000</color>
-    <color name="cards_and_dialogs_color">@android:color/white</color>
-    <color name="quantum_grey_600">#757575</color>
-
-<!--    <color name="divider_color">#1FFFFFFF</color>-->
-<!--    <color name="active_icon_color">@android:color/white</color>-->
-<!--    <color name="cards_and_dialogs_color">#424242</color>-->
-
 </resources>

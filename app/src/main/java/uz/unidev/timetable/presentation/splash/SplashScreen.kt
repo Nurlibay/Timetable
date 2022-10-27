@@ -24,7 +24,7 @@ class SplashScreen : Fragment(R.layout.screen_splash) {
         super.onViewCreated(view, savedInstanceState)
         val sharedPref = SharedPref(requireContext())
         lifecycleScope.launch {
-            delay(2000)
+            delay(1500)
             if (sharedPref.isSigned) {
                 navController.navigate(SplashScreenDirections.actionSplashScreenToMainContainer())
             } else {

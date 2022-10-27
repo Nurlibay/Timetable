@@ -5,11 +5,9 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
-import uz.unidev.timetable.databinding.ScreenHomeBinding
 import uz.unidev.timetable.databinding.ScreenWeekBinding
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider
@@ -25,17 +23,16 @@ class WeekScreen: Fragment(R.layout.screen_week) {
     private val viewModel: WeekViewModel by viewModel()
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private val adapter by lazy { WeekAdapter() }
-    private val args: WeekScreenArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
-        viewModel.getGroupData(args.groupData.id)
+        //viewModel.getGroupData(args.groupData.id)
         setupObserver()
         binding.iconBack.setOnClickListener {
             navController.navigateUp()
         }
-        binding.tvGroupNumber.text = args.groupData.name
+        //binding.tvGroupNumber.text = args.groupData.name
     }
 
     private fun setupAdapter() {
@@ -44,7 +41,7 @@ class WeekScreen: Fragment(R.layout.screen_week) {
             rvWeeks.addVerticalDivider(requireContext())
         }
         adapter.setOnItemClickListener {
-            navController.navigate(WeekScreenDirections.actionWeekScreenToDaysScreen(it, args.groupData.id))
+
         }
     }
 

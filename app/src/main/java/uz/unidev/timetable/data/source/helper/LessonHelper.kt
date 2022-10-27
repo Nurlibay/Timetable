@@ -2,7 +2,6 @@ package uz.unidev.timetable.data.source.helper
 
 import com.google.firebase.firestore.FirebaseFirestore
 import uz.unidev.timetable.data.models.LessonData
-import uz.unidev.timetable.data.models.WeekData
 import uz.unidev.timetable.utils.Constants
 
 /**
@@ -20,7 +19,8 @@ class LessonHelper(
         onSuccess: (groups: List<LessonData>) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
-        db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS).document(weekName).collection(dayName).get()
+        db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
+            .document(weekName).collection(dayName).get()
             .addOnSuccessListener {
                 val days = it.documents.map { doc ->
                     doc.toObject(LessonData::class.java)!!
@@ -30,6 +30,14 @@ class LessonHelper(
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)
             }
+    }
+
+    fun addLesson(
+        lessonData: LessonData,
+        onSuccess: (msg: String?) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        db.collection(Constants.TIMETABLE)
     }
 
 }

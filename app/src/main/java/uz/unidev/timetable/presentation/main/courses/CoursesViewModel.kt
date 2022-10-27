@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.group
+package uz.unidev.timetable.presentation.main.courses
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,7 +11,7 @@ import uz.unidev.timetable.utils.Resource
  *  Created by Nurlibay Koshkinbaev on 16/10/2022 18:37
  */
 
-class GroupViewModel(
+class CoursesViewModel(
     private val mainRepository: MainRepository
 ) : ViewModel() {
     private var mutableGroup: MutableLiveData<Resource<List<GroupData>>> = MutableLiveData()
