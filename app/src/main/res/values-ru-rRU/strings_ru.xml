@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Расписание уроков</string>
+    <string name="create_account">Зарегистрироваться</string>
+    <string name="full_name">ФИО</string>
+    <string name="email_address">Адрес электронной почты</string>
+    <string name="password">Пароль</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="already_have_an_account">У вас уже есть аккаунт?</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_in">Логин</string>
+    <string name="dont_have_an_account">У вас нет аккаунта?</string>
+    <string name="password_length_condition">Пароль должен быть не менее 6 символов</string>
+    <string name="no_internet">Нет соединения с интернетом</string>
+    <string name="home">Дом</string>
+    <string name="enter_full_name">Введите полное имя</string>
+    <string name="teacher">Учитель</string>
+    <string name="profile">Профиль</string>
+    <string name="student_s_timetable">Расписание студентов</string>
+    <string name="phone_number">Номер телефона</string>
+    <string name="edit_profile">Редактировать профиль</string>
+    <string name="edit_profile_image">Изменить изображение профиля</string>
+    <string name="tvName">ФИО</string>
+    <string name="student_added_to_db">Студент добавлен в удаленную базу данных</string>
+    <string name="groups">Группы</string>
+    <string name="course">Курсы</string>
+    <string name="no_lesson">В этот день уроков нет</string>
+    <string name="search">Поиск</string>
+    <string name="search_title">Поиск</string>
+    <string name="search_group_by_name">Поиск группы по названию</string>
+    <string name="search_group">Группа поиска</string>
+    <string name="no_search_results_found">Искомая группа не найдена</string>
+    <string name="add_lesson">Добавить урок</string>
+    <string name="lesson_name">Название урока</string>
+    <string name="room">Кабинет</string>
+    <string name="day">День</string>
+    <string name="timetable">Расписание уроков</string>
+    <string name="teachers">Учителя</string>
+    <string name="search_course">Поиск курса</string>
+
+    <string-array name="days">
+        <item>Понедельник</item>
+        <item>Вторник</item>
+        <item>Среда</item>
+        <item>Четверг</item>
+        <item>Пятница</item>
+        <item>Суббота</item>
+        <item>Воскресенье</item>
+    </string-array>
+</resources>

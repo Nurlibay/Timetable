@@ -36,6 +36,10 @@
     <string name="timetable">Timetable</string>
     <string name="teachers">Teachers</string>
     <string name="search_course">Search course</string>
+    <string name="settings">Settings</string>
+    <string name="language">Langauge</string>
+    <string name="english">English</string>
+    <string name="russion">Russion</string>
 
     <string-array name="days">
         <item>Monday</item>
