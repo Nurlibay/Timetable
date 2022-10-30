@@ -147,6 +147,7 @@
             android:backgroundTint="@color/white"
             android:drawableTint="@color/main_color"
             android:hint="@string/day"
+            android:inputType="none"
             android:padding="@dimen/margin_standard"
             android:textColor="@color/black"
             android:textColorHint="@color/black"

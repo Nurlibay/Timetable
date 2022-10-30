@@ -46,6 +46,12 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="edit_lesson">Edit lesson</string>
+    <string name="empty_name">Name Is Empty</string>
+    <string name="empty_room">Room Is Empty</string>
+    <string name="empty_teacher">Teacher Is Empty</string>
+    <string name="empty_start_time">Start Time Is Empty</string>
+    <string name="empty_end_time">End Time Is Empty</string>
+    <string name="empty_day_name">Day Name Is Empty</string>
 
     <string-array name="days">
         <item>Monday</item>

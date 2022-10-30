@@ -33,12 +33,11 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObserver()
+        setData()
         binding.apply {
             val days = resources.getStringArray(R.array.days)
             val adapter = ArrayAdapter(requireContext(), R.layout.item_days, days)
             autoCompleteTextView.setAdapter(adapter)
-
-            setData()
 
             iconSetStartTime.setOnClickListener {
                 openTimePickerForStartTime()
@@ -53,31 +52,35 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             }
 
             iconDone.setOnClickListener {
-                viewModel.editLesson(
-                    args.groupId,
-                    args.weekId,
-                    LessonData(
-                        args.lessonData.id,
-                        etName.text.toString(),
-                        etRoom.text.toString(),
-                        etStartTime.text.toString(),
-                        etEndTime.text.toString(),
-                        etTeacher.text.toString(),
-                        autoCompleteTextView.text.toString().lowercase()
+                if(validate()) {
+                    viewModel.editLesson(
+                        args.groupId,
+                        args.weekId,
+                        LessonData(
+                            args.lessonData.id,
+                            etName.text.toString(),
+                            etRoom.text.toString(),
+                            etStartTime.text.toString(),
+                            etEndTime.text.toString(),
+                            etTeacher.text.toString(),
+                            autoCompleteTextView.text.toString().lowercase()
+                        )
                     )
-                )
-                navController.popBackStack()
+                    navController.popBackStack()
+                }
             }
         }
     }
 
-    private fun ScreenEditLessonBinding.setData() {
-        etName.setText(args.lessonData.name)
-        etTeacher.setText(args.lessonData.teacher)
-        etRoom.setText(args.lessonData.room)
-        autoCompleteTextView.setText(args.lessonData.dayName)
-        etStartTime.setText(args.lessonData.startTime)
-        etEndTime.setText(args.lessonData.endTime)
+    private fun setData() {
+        binding.apply {
+            etName.setText(args.lessonData.name)
+            etTeacher.setText(args.lessonData.teacher)
+            etRoom.setText(args.lessonData.room)
+            autoCompleteTextView.setText(args.lessonData.dayName)
+            etStartTime.setText(args.lessonData.startTime)
+            etEndTime.setText(args.lessonData.endTime)
+        }
     }
 
     private fun setupObserver() {
@@ -132,5 +135,34 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
         binding.apply {
             progressBar.isVisible = isLoading
         }
+    }
+
+    private fun validate(): Boolean {
+        binding.apply {
+            if(etName.text.toString().isEmpty()) {
+                tilName.error = getString(R.string.empty_name)
+            }
+            if(etTeacher.text.toString().isEmpty()) {
+                tilTeacher.error = getString(R.string.empty_teacher)
+            }
+            if(etRoom.text.toString().isEmpty()) {
+                tilRoom.error = getString(R.string.empty_room)
+            }
+            if(etStartTime.text.toString().isEmpty()) {
+                tilStartTime.error = getString(R.string.empty_start_time)
+            }
+            if(etEndTime.text.toString().isEmpty()) {
+                tilEndTime.error = getString(R.string.empty_end_time)
+            }
+            if(autoCompleteTextView.text.toString().isEmpty()) {
+                tilDay.error = getString(R.string.empty_day_name)
+            }
+            else if(etName.text.toString().isNotEmpty() && etTeacher.text.toString().isNotEmpty()
+                && etRoom.text.toString().isNotEmpty() && etStartTime.text.toString().isNotEmpty()
+                && etEndTime.text.toString().isNotEmpty() && autoCompleteTextView.text.toString().isNotEmpty() ) {
+                return true
+            }
+        }
+        return false
     }
 }
