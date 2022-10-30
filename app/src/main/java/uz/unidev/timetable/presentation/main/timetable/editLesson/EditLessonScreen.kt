@@ -13,11 +13,11 @@ import com.google.android.material.timepicker.TimeFormat
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.LessonData
-import uz.unidev.timetable.databinding.ScreenAddLessonBinding
 import uz.unidev.timetable.databinding.ScreenEditLessonBinding
+import uz.unidev.timetable.presentation.main.timetable.addLesson.AddLessonViewModel
+import uz.unidev.timetable.presentation.main.timetable.lesson.LessonViewModel
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.showMessage
-import java.util.UUID
 
 /**
  *  Created by Nurlibay Koshkinbaev on 27/10/2022 14:46
@@ -28,11 +28,15 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
     private val binding: ScreenEditLessonBinding by viewBinding()
     private val navController by lazy { findNavController() }
     private val viewModel: EditLessonViewModel by viewModel()
+    private val addLessonViewModel: AddLessonViewModel by viewModel()
+    private val lessonViewModel: LessonViewModel by viewModel()
     private val args by navArgs<EditLessonScreenArgs>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupObserver()
+        setupObserverEditLessonStatus()
+        setupObserverDeleteLessonStatus()
+        setupObserverAddLessonStatus()
         setData()
         binding.apply {
             val days = resources.getStringArray(R.array.days)
@@ -53,19 +57,48 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
 
             iconDone.setOnClickListener {
                 if(validate()) {
-                    viewModel.editLesson(
-                        args.groupId,
-                        args.weekId,
-                        LessonData(
-                            args.lessonData.id,
-                            etName.text.toString(),
-                            etRoom.text.toString(),
-                            etStartTime.text.toString(),
-                            etEndTime.text.toString(),
-                            etTeacher.text.toString(),
-                            autoCompleteTextView.text.toString().lowercase()
+                    if(autoCompleteTextView.text.toString() == args.lessonData.dayName) {
+                        viewModel.editLesson(
+                            args.groupId,
+                            args.weekId,
+                            LessonData(
+                                args.lessonData.id,
+                                etName.text.toString(),
+                                etRoom.text.toString(),
+                                etStartTime.text.toString(),
+                                etEndTime.text.toString(),
+                                etTeacher.text.toString(),
+                                autoCompleteTextView.text.toString().lowercase()
+                            )
                         )
-                    )
+                    } else {
+                        lessonViewModel.deleteLesson(
+                            args.groupId,
+                            args.weekId,
+                            LessonData(
+                                args.lessonData.id,
+                                etName.text.toString(),
+                                etRoom.text.toString(),
+                                etStartTime.text.toString(),
+                                etEndTime.text.toString(),
+                                etTeacher.text.toString(),
+                                args.lessonData.dayName.lowercase()
+                            )
+                        )
+                        addLessonViewModel.addLesson(
+                            args.groupId,
+                            args.weekId,
+                            LessonData(
+                                args.lessonData.id,
+                                etName.text.toString(),
+                                etRoom.text.toString(),
+                                etStartTime.text.toString(),
+                                etEndTime.text.toString(),
+                                etTeacher.text.toString(),
+                                autoCompleteTextView.text.toString().lowercase()
+                            )
+                        )
+                    }
                     navController.popBackStack()
                 }
             }
@@ -83,8 +116,60 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
         }
     }
 
-    private fun setupObserver() {
+    private fun setupObserverEditLessonStatus() {
         viewModel.editLesson.observe(viewLifecycleOwner) {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    setLoading(true)
+                }
+                ResourceState.SUCCESS -> {
+                    setLoading(false)
+                    binding.apply {
+                        it.data?.let { successMessage ->
+                            showMessage(successMessage)
+                        }
+                    }
+                }
+                ResourceState.ERROR -> {
+                    setLoading(false)
+                    showMessage(it.message.toString())
+                }
+                ResourceState.NETWORK_ERROR -> {
+                    setLoading(false)
+                    showMessage(getString(R.string.no_internet))
+                }
+            }
+        }
+    }
+
+    private fun setupObserverDeleteLessonStatus() {
+        viewModel.editLesson.observe(viewLifecycleOwner) {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    setLoading(true)
+                }
+                ResourceState.SUCCESS -> {
+                    setLoading(false)
+                    binding.apply {
+                        it.data?.let { successMessage ->
+                            showMessage(successMessage)
+                        }
+                    }
+                }
+                ResourceState.ERROR -> {
+                    setLoading(false)
+                    showMessage(it.message.toString())
+                }
+                ResourceState.NETWORK_ERROR -> {
+                    setLoading(false)
+                    showMessage(getString(R.string.no_internet))
+                }
+            }
+        }
+    }
+
+    private fun setupObserverAddLessonStatus() {
+        addLessonViewModel.addLesson.observe(viewLifecycleOwner) {
             when (it.status) {
                 ResourceState.LOADING -> {
                     setLoading(true)
