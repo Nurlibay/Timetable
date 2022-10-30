@@ -44,7 +44,7 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/container_english_rus"
+        android:id="@+id/container_rus_lang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

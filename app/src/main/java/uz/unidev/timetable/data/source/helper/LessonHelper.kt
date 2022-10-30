@@ -3,6 +3,8 @@ package uz.unidev.timetable.data.source.helper
 import com.google.firebase.firestore.FirebaseFirestore
 import uz.unidev.timetable.data.models.LessonData
 import uz.unidev.timetable.utils.Constants
+import java.util.*
+import kotlin.collections.HashMap
 
 /**
  *  Created by Nurlibay Koshkinbaev on 26/10/2022 16:01
@@ -33,11 +35,75 @@ class LessonHelper(
     }
 
     fun addLesson(
+        groupId: String,
+        weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String?) -> Unit,
+        onSuccess: (msg: String) -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
-        db.collection(Constants.TIMETABLE)
+        val lessonId = UUID.randomUUID().toString()
+
+        db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
+            .document(weekName).collection(lessonData.dayName).document(lessonId).set(
+                LessonData(
+                    lessonId,
+                    lessonData.name,
+                    lessonData.room,
+                    lessonData.startTime,
+                    lessonData.endTime,
+                    lessonData.teacher,
+                    lessonData.dayName
+                )
+            )
+            .addOnSuccessListener {
+                onSuccess.invoke("Lesson Successfully added")
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
     }
 
+    fun editLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+
+        val map = HashMap<String, Any>()
+        map["id"] = lessonData.id
+        map["name"] = lessonData.name
+        map["room"] = lessonData.room
+        map["startTime"] = lessonData.startTime
+        map["endTime"] = lessonData.endTime
+        map["teacher"] = lessonData.teacher
+        map["dayName"] = lessonData.dayName
+
+        db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
+            .document(weekName).collection(lessonData.dayName).document(lessonData.id).update(map)
+            .addOnSuccessListener {
+                onSuccess.invoke("Lesson Successfully updated")
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
+
+    fun deleteLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
+            .document(weekName).collection(lessonData.dayName).document(lessonData.id).delete()
+            .addOnSuccessListener {
+                onSuccess.invoke("Lesson Successfully deleted")
+            }
+            .addOnFailureListener {
+                onFailure.invoke(it.localizedMessage)
+            }
+    }
 }

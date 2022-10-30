@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.weeks
+package uz.unidev.timetable.presentation.main.timetable.weeks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

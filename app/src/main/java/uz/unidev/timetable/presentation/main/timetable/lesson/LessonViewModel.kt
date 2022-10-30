@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.lessons.lesson
+package uz.unidev.timetable.presentation.main.timetable.lesson
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -33,6 +33,28 @@ class LessonViewModel(
             },
             {
                 mutableLesson.value = Resource.error(it)
+            }
+        )
+    }
+
+    private var mutableDeleteLesson: MutableLiveData<Resource<String>> = MutableLiveData()
+    val deleteLesson: LiveData<Resource<String>> get() = mutableDeleteLesson
+
+    fun deleteLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData
+    ) {
+        mutableDeleteLesson.value = Resource.loading()
+        mainRepository.deleteLesson(
+            groupId,
+            weekName,
+            lessonData,
+            {
+                mutableDeleteLesson.value = Resource.success(it)
+            },
+            {
+                mutableDeleteLesson.value = Resource.error(it)
             }
         )
     }

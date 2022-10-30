@@ -5,4 +5,5 @@
     <dimen name="text_size_toolbar">20sp</dimen>
     <dimen name="text_size_standard">18sp</dimen>
     <dimen name="item_list_horizontal_margin">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
 </resources>

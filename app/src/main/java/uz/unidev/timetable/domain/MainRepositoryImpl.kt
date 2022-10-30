@@ -79,4 +79,34 @@ class MainRepositoryImpl(
     ) {
         lessonHelper.getLessonData(groupId, weekName, dayName, onSuccess, onFailure)
     }
+
+    override fun addLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        lessonHelper.addLesson(groupId, weekName, lessonData, onSuccess, onFailure)
+    }
+
+    override fun deleteLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        lessonHelper.deleteLesson(groupId, weekName, lessonData, onSuccess, onFailure)
+    }
+
+    override fun editLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        lessonHelper.editLesson(groupId, weekName, lessonData, onSuccess, onFailure)
+    }
 }

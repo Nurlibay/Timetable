@@ -129,4 +129,8 @@ dependencies {
     implementation "ru.ldralighieri.corbind:corbind-lifecycle:$corbind_version"
     implementation "ru.ldralighieri.corbind:corbind-recyclerview:$corbind_version"
     implementation "ru.ldralighieri.corbind:corbind-viewpager2:$corbind_version"
+
+    // swipe refresh layout
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+
 }

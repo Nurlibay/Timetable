@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.courses
+package uz.unidev.timetable.presentation.main.timetable.groups
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

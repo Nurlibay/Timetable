@@ -1,7 +1,8 @@
-package uz.unidev.timetable.presentation.main.lessons.lesson
+package uz.unidev.timetable.presentation.main.timetable.lesson
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -26,12 +27,17 @@ class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(Le
                 tvRoomNumber.text = item.room
                 tvTeacherName.text = item.teacher
                 tvLessonName.text = item.name
+
+                root.setOnLongClickListener {
+                    itemClick.invoke(item, it)
+                    true
+                }
             }
         }
     }
 
-    private var itemClick: (lessonData: LessonData) -> Unit = {}
-    fun setOnItemClickListener(block: (LessonData) -> Unit){
+    private var itemClick: (lessonData: LessonData, view: View) -> Unit = { _, _ ->}
+    fun setOnItemLongClickListener(block: (LessonData, view: View) -> Unit){
         itemClick = block
     }
 

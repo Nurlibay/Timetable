@@ -12,11 +12,13 @@ import uz.unidev.timetable.domain.MainRepository
 import uz.unidev.timetable.domain.MainRepositoryImpl
 import uz.unidev.timetable.presentation.auth.signin.SignInViewModel
 import uz.unidev.timetable.presentation.auth.signup.SignUpViewModel
-import uz.unidev.timetable.presentation.main.courses.CoursesViewModel
-import uz.unidev.timetable.presentation.main.lessons.lesson.LessonViewModel
+import uz.unidev.timetable.presentation.main.timetable.groups.GroupsViewModel
+import uz.unidev.timetable.presentation.main.timetable.lesson.LessonViewModel
 import uz.unidev.timetable.presentation.main.profile.ProfileViewModel
 import uz.unidev.timetable.presentation.main.profile.edit.EditProfileViewModel
-import uz.unidev.timetable.presentation.main.weeks.WeekViewModel
+import uz.unidev.timetable.presentation.main.timetable.addLesson.AddLessonViewModel
+import uz.unidev.timetable.presentation.main.timetable.editLesson.EditLessonViewModel
+import uz.unidev.timetable.presentation.main.timetable.weeks.WeekViewModel
 
 val dataModule = module {
     single { FirebaseAuth.getInstance() }
@@ -42,7 +44,9 @@ val viewModelModule = module {
     viewModel { SignUpViewModel(get()) }
     viewModel { ProfileViewModel(get()) }
     viewModel { EditProfileViewModel(get()) }
-    viewModel { CoursesViewModel(get()) }
+    viewModel { GroupsViewModel(get()) }
     viewModel { WeekViewModel(get()) }
     viewModel { LessonViewModel(get()) }
+    viewModel { AddLessonViewModel(get()) }
+    viewModel { EditLessonViewModel(get()) }
 }

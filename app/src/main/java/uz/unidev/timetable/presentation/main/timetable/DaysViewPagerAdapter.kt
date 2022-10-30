@@ -1,17 +1,19 @@
-package uz.unidev.timetable.presentation.main.lessons
+package uz.unidev.timetable.presentation.main.timetable
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import uz.unidev.timetable.presentation.main.lessons.lesson.LessonScreen
+import uz.unidev.timetable.presentation.main.timetable.lesson.LessonScreen
 
 /**
  *  Created by Nurlibay Koshkinbaev on 26/10/2022 16:10
  */
 
 class DaysViewPagerAdapter(
-    fa: FragmentActivity
+    fa: FragmentActivity,
+    private val groupId: String,
+    private val weekId: String
 ) : FragmentStateAdapter(fa) {
 
     override fun getItemCount() = 7
@@ -20,6 +22,8 @@ class DaysViewPagerAdapter(
         val lessonScreen = LessonScreen()
         val args = Bundle()
         args.putInt("pos", position)
+        args.putString("group_id", groupId)
+        args.putString("week_id", weekId)
         lessonScreen.arguments = args
         return lessonScreen
     }

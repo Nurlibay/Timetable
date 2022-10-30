@@ -38,6 +38,11 @@
     <string name="teachers">Учителя</string>
     <string name="search_course">Поиск курса</string>
 
+    <string name="settings">Настройки</string>
+    <string name="language">Язык</string>
+    <string name="english">Английский</string>
+    <string name="russion">Русский</string>
+
     <string-array name="days">
         <item>Понедельник</item>
         <item>Вторник</item>

@@ -2,14 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/timetableScreen"
+        android:id="@+id/coursesScreen"
         android:icon="@drawable/timetable"
         android:title="@string/timetable" />
-
-    <item
-        android:id="@+id/coursesScreen"
-        android:icon="@drawable/courses"
-        android:title="@string/course" />
 
     <item
         android:id="@+id/teacherScreen"

@@ -61,5 +61,27 @@ interface MainRepository {
         onFailure: (msg: String?) -> Unit
     )
 
+    fun addLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
 
+    fun deleteLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
+
+    fun editLesson(
+        groupId: String,
+        weekName: String,
+        lessonData: LessonData,
+        onSuccess: (msg: String) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
 }

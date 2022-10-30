@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.weeks
+package uz.unidev.timetable.presentation.main.timetable.weeks
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

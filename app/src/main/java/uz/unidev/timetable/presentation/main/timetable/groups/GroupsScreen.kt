@@ -1,4 +1,4 @@
-package uz.unidev.timetable.presentation.main.courses
+package uz.unidev.timetable.presentation.main.timetable.groups
 
 import android.os.Bundle
 import android.os.Handler
@@ -12,7 +12,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.GroupData
-import uz.unidev.timetable.databinding.ScreenCoursesBinding
+import uz.unidev.timetable.databinding.ScreenGroupsBinding
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider
 import uz.unidev.timetable.utils.extensions.showMessage
@@ -21,10 +21,10 @@ import uz.unidev.timetable.utils.extensions.showMessage
  *  Created by Nurlibay Koshkinbaev on 16/10/2022 16:10
  */
 
-class CoursesScreen : Fragment(R.layout.screen_courses) {
+class GroupsScreen : Fragment(R.layout.screen_groups) {
 
-    private val binding: ScreenCoursesBinding by viewBinding()
-    private val viewModel: CoursesViewModel by viewModel()
+    private val binding: ScreenGroupsBinding by viewBinding()
+    private val viewModel: GroupsViewModel by viewModel()
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private val adapter by lazy { GroupAdapter() }
     private val handler: Handler by lazy { Handler(Looper.getMainLooper()) }
@@ -60,7 +60,7 @@ class CoursesScreen : Fragment(R.layout.screen_courses) {
             rvGroups.setHasFixedSize(true)
         }
         adapter.setOnItemClickListener {
-
+            navController.navigate(GroupsScreenDirections.actionGroupsScreenToWeekScreen(it))
         }
     }
 
