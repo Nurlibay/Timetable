@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Расписание уроков</string>
+    <string name="app_name">Расписание</string>
+    <string name="lang_text">Русский</string>
     <string name="create_account">Зарегистрироваться</string>
     <string name="full_name">ФИО</string>
     <string name="email_address">Адрес электронной почты</string>
@@ -34,14 +35,36 @@
     <string name="lesson_name">Название урока</string>
     <string name="room">Кабинет</string>
     <string name="day">День</string>
-    <string name="timetable">Расписание уроков</string>
+    <string name="timetable">Расписание</string>
     <string name="teachers">Учителя</string>
     <string name="search_course">Поиск курса</string>
+
+    <string name="start_time">Время начала</string>
+    <string name="end_time">Время окончания</string>
+    <string name="select_start_time">Выберите время начала</string>
+    <string name="edit">Редактировать</string>
+    <string name="delete">Удалить</string>
+    <string name="edit_lesson">Изменить урок</string>
+    <string name="empty_name">Имя пусто</string>
+    <string name="empty_room">Комната пуста</string>
+    <string name="empty_teacher">Учитель пуст</string>
+    <string name="empty_start_time">Время начала пусто</string>
+    <string name="empty_end_time">Время окончания пусто</string>
+    <string name="empty_day_name">Имя дня пусто</string>
+    <string name="lang_title">Язык</string>
 
     <string name="settings">Настройки</string>
     <string name="language">Язык</string>
     <string name="english">Английский</string>
     <string name="russion">Русский</string>
+
+    <string name="monday">Понедельник</string>
+    <string name="tuesday">Вторник</string>
+    <string name="wednesday">Среда</string>
+    <string name="thursday">Четверг</string>
+    <string name="friday">Пятница</string>
+    <string name="saturday">Суббота</string>
+    <string name="sunday">Воскресенье</string>
 
     <string-array name="days">
         <item>Понедельник</item>
@@ -52,4 +75,5 @@
         <item>Суббота</item>
         <item>Воскресенье</item>
     </string-array>
+
 </resources>

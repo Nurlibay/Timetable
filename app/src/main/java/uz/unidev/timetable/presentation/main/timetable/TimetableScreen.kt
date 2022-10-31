@@ -27,7 +27,8 @@ class TimetableScreen : Fragment(R.layout.screen_timetable) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             pagerMain.adapter = DaysViewPagerAdapter(requireActivity(), args.groupId, args.weekData.id)
-            val list = listOf("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+            val list = listOf(getString(R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(
+                            R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
             TabLayoutMediator(binding.tabLayout, binding.pagerMain) { tab, pos ->
                 tab.text = list[pos]
             }.attach()

@@ -32,6 +32,7 @@ class LanguageDialog : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         binding.apply {
             tvEng.setOnClickListener {
                 pref.language = "en"

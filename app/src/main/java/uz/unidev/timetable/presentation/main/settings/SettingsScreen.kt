@@ -18,6 +18,7 @@ class SettingsScreen: Fragment(R.layout.screen_settings) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            tvLang.text = resources.getString(R.string.lang_text)
             containerSelectLanguage.setOnClickListener {
                 val dialog = LanguageDialog()
                 dialog.show(requireActivity().supportFragmentManager, "LanguageDialog")
