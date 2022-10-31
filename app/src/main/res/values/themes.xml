@@ -14,9 +14,9 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="TextInputLayoutDropDown" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+    <style name="TextInputLayoutDropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 <!--        <item name="boxStrokeColor">#A3000000</item>-->
-        <item name="boxBackgroundMode">outline</item>
+<!--        <item name="boxBackgroundMode">outline</item>-->
         <item name="boxBackgroundColor">@color/main_color</item>
         <item name="android:textColorHint">@color/white</item>
         <item name="startIconTint">@color/main_color</item>

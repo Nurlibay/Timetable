@@ -24,7 +24,7 @@
     <string name="tvName">ФИО</string>
     <string name="student_added_to_db">Студент добавлен в удаленную базу данных</string>
     <string name="groups">Группы</string>
-    <string name="course">Курсы</string>
+    <string name="course">Курсы:</string>
     <string name="no_lesson">В этот день уроков нет</string>
     <string name="search">Поиск</string>
     <string name="search_title">Поиск</string>
@@ -58,6 +58,11 @@
     <string name="english">Английский</string>
     <string name="russion">Русский</string>
 
+    <string name="professor">Профессор</string>
+    <string name="android">Android</string>
+    <string name="empty" />
+    <string name="sub_group">Подгруппа</string>
+
     <string name="monday">Понедельник</string>
     <string name="tuesday">Вторник</string>
     <string name="wednesday">Среда</string>
@@ -75,5 +80,15 @@
         <item>Суббота</item>
         <item>Воскресенье</item>
     </string-array>
+
+    <string-array name="subGroups">
+        <item>Full group</item>
+        <item>Подгруппа 1</item>
+        <item>Подгруппа 2</item>
+    </string-array>
+
+    <string name="edit_lesson_status">Урок успешно отредактирован</string>
+    <string name="lesson_delete_status">Урок успешно удален</string>
+    <string name="add_lesson_status">Урок успешно добавлен</string>
 
 </resources>

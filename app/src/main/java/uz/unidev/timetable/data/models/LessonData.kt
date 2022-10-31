@@ -15,5 +15,6 @@ data class LessonData(
     var startTime: String = "",
     var endTime: String = "",
     var teacher: String = "",
-    var dayName: String = ""
+    var dayName: String = "",
+    var subGroup: String = ""
 ): Parcelable

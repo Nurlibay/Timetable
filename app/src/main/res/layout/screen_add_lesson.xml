@@ -157,6 +157,35 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_sub_group"
+        style="@style/TextInputLayoutDropDown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/margin_standard"
+        android:layout_marginTop="@dimen/margin_standard"
+        android:textColorHint="@color/black"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_day">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/auto_complete_text_view_sub_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/white"
+            android:drawableTint="@color/main_color"
+            android:inputType="none"
+            android:hint="@string/sub_group"
+            android:padding="@dimen/margin_standard"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="16sp"
+            tools:ignore="UnusedAttribute" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_start_time"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
@@ -170,7 +199,7 @@
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toStartOf="@id/icon_set_start_time"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/til_day">
+        app:layout_constraintTop_toBottomOf="@id/til_sub_group">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_start_time"

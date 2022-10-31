@@ -89,7 +89,7 @@ class MainRepositoryImpl(
         groupId: String,
         weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
         lessonHelper.addLesson(groupId, weekName, lessonData, onSuccess, onFailure)
@@ -109,7 +109,7 @@ class MainRepositoryImpl(
         groupId: String,
         weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
         lessonHelper.editLesson(groupId, weekName, lessonData, onSuccess, onFailure)

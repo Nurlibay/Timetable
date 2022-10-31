@@ -74,16 +74,36 @@
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_teacher_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
         android:layout_weight="1"
+        android:layout_gravity="end|bottom"
         android:gravity="end|bottom"
-        android:singleLine="true"
-        android:ellipsize="end"
-        android:text="Соловьев Я.А"
-        android:textSize="16sp" />
+        >
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_sub_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:gravity="end|bottom"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="Sub group 1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_teacher_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:gravity="end|bottom"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:text="Соловьев Я.А"
+            android:textSize="16sp" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

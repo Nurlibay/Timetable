@@ -29,7 +29,7 @@ class EditLessonViewModel(
             weekName,
             lessonData,
             {
-                mutableEditLesson.value = Resource.success(it)
+                mutableEditLesson.value = Resource.success("")
             },
             {
                 mutableEditLesson.value = Resource.error(it)

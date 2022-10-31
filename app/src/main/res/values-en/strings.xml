@@ -24,7 +24,7 @@
     <string name="tvName">Full Name</string>
     <string name="student_added_to_db">Student added to remote database</string>
     <string name="groups">Groups</string>
-    <string name="course">Courses</string>
+    <string name="course">Courses:</string>
     <string name="no_lesson">On this day, there are no lessons</string>
     <string name="search">Search</string>
     <string name="search_title">Search</string>
@@ -57,6 +57,11 @@
     <string name="empty_day_name">Day Name Is Empty</string>
     <string name="lang_title">Language</string>
 
+    <string name="professor">Professor</string>
+    <string name="android">Android</string>
+    <string name="empty" />
+    <string name="sub_group">Sub group</string>
+
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>
@@ -74,5 +79,15 @@
         <item>Saturday</item>
         <item>Sunday</item>
     </string-array>
+
+    <string-array name="subGroups">
+        <item>Full group</item>
+        <item>Sub group 1</item>
+        <item>Sub group 2</item>
+    </string-array>
+
+    <string name="edit_lesson_status">Lesson Successfully edited</string>
+    <string name="lesson_delete_status">Lesson Successfully deleted</string>
+    <string name="add_lesson_status">Lesson Successfully added</string>
 
 </resources>

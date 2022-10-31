@@ -37,6 +37,10 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
             val adapter = ArrayAdapter(requireContext(), R.layout.item_days, days)
             autoCompleteTextView.setAdapter(adapter)
 
+            val subGroups = resources.getStringArray(R.array.subGroups)
+            val subGroupAdapter = ArrayAdapter(requireContext(), R.layout.item_days, subGroups)
+            autoCompleteTextViewSubGroup.setAdapter(subGroupAdapter)
+
             iconSetStartTime.setOnClickListener {
                 openTimePickerForStartTime()
             }
@@ -61,7 +65,8 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                             etStartTime.text.toString(),
                             etEndTime.text.toString(),
                             etTeacher.text.toString(),
-                            autoCompleteTextView.text.toString().lowercase()
+                            autoCompleteTextView.text.toString().lowercase(),
+                            autoCompleteTextViewSubGroup.text.toString()
                         )
                     )
                     navController.popBackStack()

@@ -43,6 +43,10 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             val adapter = ArrayAdapter(requireContext(), R.layout.item_days, days)
             autoCompleteTextView.setAdapter(adapter)
 
+            val subGroups = resources.getStringArray(R.array.subGroups)
+            val subGroupAdapter = ArrayAdapter(requireContext(), R.layout.item_days, subGroups)
+            autoCompleteTextViewSubGroup.setAdapter(subGroupAdapter)
+
             iconSetStartTime.setOnClickListener {
                 openTimePickerForStartTime()
             }
@@ -68,7 +72,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etStartTime.text.toString(),
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
-                                autoCompleteTextView.text.toString().lowercase()
+                                autoCompleteTextView.text.toString().lowercase(),
+                                autoCompleteTextViewSubGroup.text.toString()
                             )
                         )
                     } else {
@@ -82,7 +87,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etStartTime.text.toString(),
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
-                                args.lessonData.dayName.lowercase()
+                                args.lessonData.dayName.lowercase(),
+                                autoCompleteTextViewSubGroup.text.toString()
                             )
                         )
                         addLessonViewModel.addLesson(
@@ -95,7 +101,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etStartTime.text.toString(),
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
-                                autoCompleteTextView.text.toString().lowercase()
+                                autoCompleteTextView.text.toString().lowercase(),
+                                autoCompleteTextViewSubGroup.text.toString()
                             )
                         )
                     }
@@ -111,6 +118,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             etTeacher.setText(args.lessonData.teacher)
             etRoom.setText(args.lessonData.room)
             autoCompleteTextView.setText(args.lessonData.dayName)
+            autoCompleteTextViewSubGroup.setText(args.lessonData.subGroup)
             etStartTime.setText(args.lessonData.startTime)
             etEndTime.setText(args.lessonData.endTime)
         }
@@ -125,8 +133,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                 ResourceState.SUCCESS -> {
                     setLoading(false)
                     binding.apply {
-                        it.data?.let { successMessage ->
-                            showMessage(successMessage)
+                        it.data?.let { _ ->
+                            showMessage(getString(R.string.edit_lesson_status))
                         }
                     }
                 }
@@ -151,8 +159,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                 ResourceState.SUCCESS -> {
                     setLoading(false)
                     binding.apply {
-                        it.data?.let { successMessage ->
-                            showMessage(successMessage)
+                        it.data?.let { _ ->
+                            showMessage(getString(R.string.lesson_delete_status))
                         }
                     }
                 }
@@ -177,8 +185,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                 ResourceState.SUCCESS -> {
                     setLoading(false)
                     binding.apply {
-                        it.data?.let { successMessage ->
-                            showMessage(successMessage)
+                        it.data?.let { _ ->
+                            showMessage(getString(R.string.add_lesson_status))
                         }
                     }
                 }

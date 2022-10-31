@@ -29,7 +29,7 @@ class AddLessonViewModel(
             weekName,
             lessonData,
             {
-                mutableAddLesson.value = Resource.success(it)
+                mutableAddLesson.value = Resource.success("")
             },
             {
                 mutableAddLesson.value = Resource.error(it)

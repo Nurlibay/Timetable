@@ -24,10 +24,10 @@ class LessonHelper(
         db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
             .document(weekName).collection(dayName).get()
             .addOnSuccessListener {
-                val days = it.documents.map { doc ->
+                val lessonData = it.documents.map { doc ->
                     doc.toObject(LessonData::class.java)!!
                 }
-                onSuccess.invoke(days)
+                onSuccess.invoke(lessonData)
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)
@@ -38,7 +38,7 @@ class LessonHelper(
         groupId: String,
         weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
         val lessonId = UUID.randomUUID().toString()
@@ -52,11 +52,12 @@ class LessonHelper(
                     lessonData.startTime,
                     lessonData.endTime,
                     lessonData.teacher,
-                    lessonData.dayName
+                    lessonData.dayName,
+                    lessonData.subGroup
                 )
             )
             .addOnSuccessListener {
-                onSuccess.invoke("Lesson Successfully added")
+                onSuccess.invoke()
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)
@@ -67,7 +68,7 @@ class LessonHelper(
         groupId: String,
         weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     ) {
 
@@ -79,11 +80,12 @@ class LessonHelper(
         map["endTime"] = lessonData.endTime
         map["teacher"] = lessonData.teacher
         map["dayName"] = lessonData.dayName
+        map["subGroup"] = lessonData.subGroup
 
         db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
             .document(weekName).collection(lessonData.dayName).document(lessonData.id).update(map)
             .addOnSuccessListener {
-                onSuccess.invoke("Lesson Successfully updated")
+                onSuccess.invoke()
             }
             .addOnFailureListener {
                 onFailure.invoke(it.localizedMessage)

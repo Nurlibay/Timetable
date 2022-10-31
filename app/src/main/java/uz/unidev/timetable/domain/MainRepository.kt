@@ -67,7 +67,7 @@ interface MainRepository {
         groupId: String,
         weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     )
 
@@ -83,7 +83,7 @@ interface MainRepository {
         groupId: String,
         weekName: String,
         lessonData: LessonData,
-        onSuccess: (msg: String) -> Unit,
+        onSuccess: () -> Unit,
         onFailure: (msg: String?) -> Unit
     )
 }
