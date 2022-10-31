@@ -59,7 +59,8 @@
     <fragment
         android:id="@+id/editLessonScreen"
         android:name="uz.unidev.timetable.presentation.main.timetable.editLesson.EditLessonScreen"
-        android:label="EditLessonScreen">
+        android:label="EditLessonScreen"
+        tools:layout="@layout/screen_edit_lesson">
         <argument
             android:name="group_id"
             app:argType="string" />
@@ -71,4 +72,12 @@
     <action
         android:id="@+id/action_global_editLessonScreen"
         app:destination="@id/editLessonScreen" />
+    <fragment
+        android:id="@+id/settingsScreen"
+        android:name="uz.unidev.timetable.presentation.main.settings.SettingsScreen"
+        android:label="SettingsScreen"
+        tools:layout="@layout/screen_settings" />
+    <action
+        android:id="@+id/action_global_settingsScreen"
+        app:destination="@id/settingsScreen" />
 </navigation>

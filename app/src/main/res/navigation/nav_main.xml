@@ -99,5 +99,10 @@
     <action
         android:id="@+id/action_global_editLessonScreen"
         app:destination="@id/editLessonScreen" />
+    <fragment
+        android:id="@+id/settingsScreen"
+        tools:layout="@layout/screen_settings"
+        android:name="uz.unidev.timetable.presentation.main.settings.SettingsScreen"
+        android:label="SettingsScreen" /><action android:id="@+id/action_global_settingsScreen" app:destination="@id/settingsScreen"/>
 
 </navigation>

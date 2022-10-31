@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import uz.unidev.timetable.NavAuthDirections
+import uz.unidev.timetable.NavMainDirections
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenProfileBinding
 import uz.unidev.timetable.utils.ResourceState
@@ -29,6 +31,9 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
         binding.apply {
             imageEdit.setOnClickListener {
                 navController.navigate(ProfileScreenDirections.actionProfileScreenToEditProfileScreen())
+            }
+            iconSettings.setOnClickListener {
+                navController.navigate(NavAuthDirections.actionGlobalSettingsScreen())
             }
         }
     }

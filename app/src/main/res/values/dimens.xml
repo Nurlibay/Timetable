@@ -6,4 +6,8 @@
     <dimen name="text_size_standard">18sp</dimen>
     <dimen name="item_list_horizontal_margin">16dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="radius_card_view">8dp</dimen>
+    <dimen name="dialog_min_width">280dp</dimen>
+    <dimen name="padding_standard">16dp</dimen>
+    <dimen name="margin_large_standard">32dp</dimen>
 </resources>

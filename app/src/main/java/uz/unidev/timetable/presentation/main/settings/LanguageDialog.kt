@@ -26,19 +26,20 @@ class LanguageDialog : DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        requireDialog().window?.setBackgroundDrawableResource(R.drawable.shape_dialog)
         return inflater.inflate(R.layout.dialog_choose_language, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            containerEnglishLang.setOnClickListener {
+            tvEng.setOnClickListener {
                 pref.language = "en"
                 dismiss()
                 (requireActivity() as MainActivity).setNewLocale()
                 dismiss()
             }
-            containerRusLang.setOnClickListener {
+            tvRu.setOnClickListener {
                 pref.language = "ru"
                 dismiss()
                 (requireActivity() as MainActivity).setNewLocale()

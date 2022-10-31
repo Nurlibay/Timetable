@@ -52,6 +52,7 @@
     <string name="empty_start_time">Start Time Is Empty</string>
     <string name="empty_end_time">End Time Is Empty</string>
     <string name="empty_day_name">Day Name Is Empty</string>
+    <string name="lang_title">Language</string>
 
     <string-array name="days">
         <item>Monday</item>

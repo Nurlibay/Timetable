@@ -19,9 +19,9 @@ class SettingsScreen: Fragment(R.layout.screen_settings) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             containerSelectLanguage.setOnClickListener {
-                
+                val dialog = LanguageDialog()
+                dialog.show(requireActivity().supportFragmentManager, "LanguageDialog")
             }
         }
     }
-
 }
