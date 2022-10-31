@@ -63,6 +63,8 @@
     <string name="friday">Friday</string>
     <string name="saturday">Saturday</string>
     <string name="sunday">Sunday</string>
+    <string name="professor">Professor</string>
+    <string name="android">Android</string>
 
     <string-array name="days">
         <item>Monday</item>

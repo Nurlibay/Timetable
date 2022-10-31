@@ -30,6 +30,7 @@ val dataModule = module {
     single { GroupHelper(get()) }
     single { WeekHelper(get()) }
     single { LessonHelper(get()) }
+    single { TeacherHelper(get()) }
 }
 
 val sharedPrefModule = module {
@@ -37,7 +38,7 @@ val sharedPrefModule = module {
 }
 
 val repositoryModule = module {
-    single<MainRepository> { MainRepositoryImpl(get(), get(), get(), get(), get()) }
+    single<MainRepository> { MainRepositoryImpl(get(), get(), get(), get(), get(), get()) }
 }
 
 val viewModelModule = module {

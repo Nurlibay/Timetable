@@ -1,9 +1,6 @@
 package uz.unidev.timetable.domain
 
-import uz.unidev.timetable.data.models.GroupData
-import uz.unidev.timetable.data.models.LessonData
-import uz.unidev.timetable.data.models.StudentData
-import uz.unidev.timetable.data.models.WeekData
+import uz.unidev.timetable.data.models.*
 
 /**
  *  Created by Nurlibay Koshkinbaev on 16/10/2022 15:31
@@ -38,6 +35,11 @@ interface MainRepository {
 
     fun getGroupData(
         onSuccess: (students: List<GroupData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    )
+
+    fun getTeachersData(
+        onSuccess: (students: List<TeacherData>) -> Unit,
         onFailure: (msg: String?) -> Unit
     )
 

@@ -1,9 +1,6 @@
 package uz.unidev.timetable.domain
 
-import uz.unidev.timetable.data.models.GroupData
-import uz.unidev.timetable.data.models.LessonData
-import uz.unidev.timetable.data.models.StudentData
-import uz.unidev.timetable.data.models.WeekData
+import uz.unidev.timetable.data.models.*
 import uz.unidev.timetable.data.source.helper.*
 
 class MainRepositoryImpl(
@@ -11,7 +8,8 @@ class MainRepositoryImpl(
     private val profileHelper: ProfileHelper,
     private val groupHelper: GroupHelper,
     private val weekHelper: WeekHelper,
-    private val lessonHelper: LessonHelper
+    private val lessonHelper: LessonHelper,
+    private val teacherHelper: TeacherHelper
 ) : MainRepository {
     override fun signIn(
         email: String,
@@ -52,6 +50,13 @@ class MainRepositoryImpl(
         onFailure: (msg: String?) -> Unit
     ) {
         groupHelper.getGroupData(onSuccess, onFailure)
+    }
+
+    override fun getTeachersData(
+        onSuccess: (students: List<TeacherData>) -> Unit,
+        onFailure: (msg: String?) -> Unit
+    ) {
+        teacherHelper.getTeachersData(onSuccess, onFailure)
     }
 
     override fun getFilteredGroups(

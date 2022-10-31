@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.TeacherData
 import uz.unidev.timetable.databinding.ItemTeacherBinding
@@ -16,14 +17,20 @@ import uz.unidev.timetable.databinding.ItemTeacherBinding
 
 class TeachersAdapter : ListAdapter<TeacherData, TeachersAdapter.TeacherViewHolder>(TeacherItemCallBack) {
 
-    var query: String? = null
-
     inner class TeacherViewHolder(private val binding: ItemTeacherBinding) : RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind() {
             val item = getItem(absoluteAdapterPosition)
             binding.apply {
-
+                Glide
+                    .with(root.context)
+                    .load(item.img)
+                    .placeholder(R.drawable.ic_account)
+                    .centerCrop()
+                    .into(ivTeacher)
+                tvTeacherName.text = item.name
+                tvTeacherType.text = item.type
+                tvSubjectName.text = item.subject
             }
         }
     }
