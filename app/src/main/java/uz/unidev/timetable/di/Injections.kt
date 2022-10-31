@@ -16,6 +16,7 @@ import uz.unidev.timetable.presentation.main.timetable.groups.GroupsViewModel
 import uz.unidev.timetable.presentation.main.timetable.lesson.LessonViewModel
 import uz.unidev.timetable.presentation.main.profile.ProfileViewModel
 import uz.unidev.timetable.presentation.main.profile.edit.EditProfileViewModel
+import uz.unidev.timetable.presentation.main.teacher.TeacherViewModel
 import uz.unidev.timetable.presentation.main.timetable.addLesson.AddLessonViewModel
 import uz.unidev.timetable.presentation.main.timetable.editLesson.EditLessonViewModel
 import uz.unidev.timetable.presentation.main.timetable.weeks.WeekViewModel
@@ -49,4 +50,5 @@ val viewModelModule = module {
     viewModel { LessonViewModel(get()) }
     viewModel { AddLessonViewModel(get()) }
     viewModel { EditLessonViewModel(get()) }
+    viewModel { TeacherViewModel(get()) }
 }
