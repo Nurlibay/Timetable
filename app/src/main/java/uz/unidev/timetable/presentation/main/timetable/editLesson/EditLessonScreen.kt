@@ -18,6 +18,7 @@ import uz.unidev.timetable.presentation.main.timetable.addLesson.AddLessonViewMo
 import uz.unidev.timetable.presentation.main.timetable.lesson.LessonViewModel
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.showMessage
+import uz.unidev.timetable.utils.extensions.toDayEnglish
 
 /**
  *  Created by Nurlibay Koshkinbaev on 27/10/2022 14:46
@@ -72,7 +73,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etStartTime.text.toString(),
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
-                                autoCompleteTextView.text.toString().lowercase(),
+                                autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                                 autoCompleteTextViewSubGroup.text.toString()
                             )
                         )
@@ -101,7 +102,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etStartTime.text.toString(),
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
-                                autoCompleteTextView.text.toString().lowercase(),
+                                autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                                 autoCompleteTextViewSubGroup.text.toString()
                             )
                         )

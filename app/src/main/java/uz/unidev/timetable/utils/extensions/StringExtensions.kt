@@ -26,3 +26,25 @@ fun String.coloredString(query: String?): Spannable {
     )
     return spannable
 }
+
+fun String.toDayEnglish(): String {
+    var res = ""
+    if (this == "Понедельник") {
+        res = "Monday"
+    } else if (this == "Вторник") {
+        res = "Tuesday"
+    } else if (this == "Среда") {
+        res = "Wednesday"
+    } else if (this == "Четверг") {
+        res = "Thursday"
+    } else if (this == "Пятница") {
+        res = "Friday"
+    } else if (this == "Суббота") {
+        res = "Saturday"
+    } else if (this == "Воскресенье") {
+        res = "Sunday"
+    } else {
+        res = this
+    }
+    return res
+}

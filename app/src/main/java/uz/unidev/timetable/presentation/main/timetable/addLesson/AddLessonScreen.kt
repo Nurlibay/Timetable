@@ -10,12 +10,15 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.LessonData
+import uz.unidev.timetable.data.source.pref.SharedPref
 import uz.unidev.timetable.databinding.ScreenAddLessonBinding
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.showMessage
+import uz.unidev.timetable.utils.extensions.toDayEnglish
 import java.util.*
 
 /**
@@ -28,6 +31,7 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
     private val navController by lazy { findNavController() }
     private val viewModel: AddLessonViewModel by viewModel()
     private val args: AddLessonScreenArgs by navArgs()
+    private val pref: SharedPref by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -65,7 +69,7 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                             etStartTime.text.toString(),
                             etEndTime.text.toString(),
                             etTeacher.text.toString(),
-                            autoCompleteTextView.text.toString().lowercase(),
+                            autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                             autoCompleteTextViewSubGroup.text.toString()
                         )
                     )
@@ -77,27 +81,28 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
 
     private fun validate(): Boolean {
         binding.apply {
-            if(etName.text.toString().isEmpty()) {
+            if (etName.text.toString().isEmpty()) {
                 tilName.error = getString(R.string.empty_name)
             }
-            if(etTeacher.text.toString().isEmpty()) {
+            if (etTeacher.text.toString().isEmpty()) {
                 tilTeacher.error = getString(R.string.empty_teacher)
             }
-            if(etRoom.text.toString().isEmpty()) {
+            if (etRoom.text.toString().isEmpty()) {
                 tilRoom.error = getString(R.string.empty_room)
             }
-            if(etStartTime.text.toString().isEmpty()) {
+            if (etStartTime.text.toString().isEmpty()) {
                 tilStartTime.error = getString(R.string.empty_start_time)
             }
-            if(etEndTime.text.toString().isEmpty()) {
+            if (etEndTime.text.toString().isEmpty()) {
                 tilEndTime.error = getString(R.string.empty_end_time)
             }
-            if(autoCompleteTextView.text.toString().isEmpty()) {
+            if (autoCompleteTextView.text.toString().isEmpty()) {
                 tilDay.error = getString(R.string.empty_day_name)
-            }
-            else if(etName.text.toString().isNotEmpty() && etTeacher.text.toString().isNotEmpty()
+            } else if (etName.text.toString().isNotEmpty() && etTeacher.text.toString().isNotEmpty()
                 && etRoom.text.toString().isNotEmpty() && etStartTime.text.toString().isNotEmpty()
-                && etEndTime.text.toString().isNotEmpty() && autoCompleteTextView.text.toString().isNotEmpty() ) {
+                && etEndTime.text.toString().isNotEmpty() && autoCompleteTextView.text.toString()
+                    .isNotEmpty()
+            ) {
                 return true
             }
         }
