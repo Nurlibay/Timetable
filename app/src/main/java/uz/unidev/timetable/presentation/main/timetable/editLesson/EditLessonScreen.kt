@@ -53,6 +53,15 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             val lessonTypeAdapter = ArrayAdapter(requireContext(), R.layout.item_days, lessonTypes)
             autoCompleteTextViewLessonType.setAdapter(lessonTypeAdapter)
 
+            autoCompleteTextViewLessonType.setOnItemClickListener { _, _, pos, _ ->
+                if (autoCompleteTextViewLessonType.text.toString() == "Laboratory") {
+                    tilSubGroup.visibility = View.VISIBLE
+                } else {
+
+                    tilSubGroup.visibility = View.GONE
+                }
+            }
+
             iconSetStartTime.setOnClickListener {
                 openTimePickerForStartTime()
             }

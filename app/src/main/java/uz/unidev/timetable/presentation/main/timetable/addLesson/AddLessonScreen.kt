@@ -60,6 +60,7 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                 if (autoCompleteTextViewLessonType.text.toString() == "Laboratory") {
                     tilSubGroup.visibility = View.VISIBLE
                 } else {
+
                     tilSubGroup.visibility = View.GONE
                 }
             }
