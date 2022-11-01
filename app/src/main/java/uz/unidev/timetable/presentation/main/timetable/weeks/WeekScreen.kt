@@ -9,6 +9,7 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
+import uz.unidev.timetable.data.models.GroupData
 import uz.unidev.timetable.databinding.ScreenWeekBinding
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider
@@ -24,17 +25,18 @@ class WeekScreen: Fragment(R.layout.screen_week) {
     private val viewModel: WeekViewModel by viewModel()
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private val adapter by lazy { WeekAdapter() }
-    private val args: WeekScreenArgs by navArgs()
+    private lateinit var groupData: GroupData
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupAdapter()
-        viewModel.getGroupData(args.groupData.id)
+        groupData = requireArguments().getParcelable("group_data")!!
+        viewModel.getGroupData(groupData.id)
         setupObserver()
         binding.iconBack.setOnClickListener {
             navController.navigateUp()
         }
-        binding.tvGroupNumber.text = args.groupData.name
+        binding.tvGroupNumber.text = groupData.name
     }
 
     private fun setupAdapter() {
@@ -43,7 +45,7 @@ class WeekScreen: Fragment(R.layout.screen_week) {
             rvWeeks.addVerticalDivider(requireContext())
         }
         adapter.setOnItemClickListener {
-            navController.navigate(WeekScreenDirections.actionWeekScreenToTimetableScreen(it, args.groupData.id))
+            navController.navigate(WeekScreenDirections.actionWeekScreenToTimetableScreen(it, groupData.id))
         }
     }
 

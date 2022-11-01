@@ -9,37 +9,13 @@
         android:id="@+id/profileScreen"
         android:name="uz.unidev.timetable.presentation.main.profile.ProfileScreen"
         android:label="ProfileScreen"
-        tools:layout="@layout/screen_profile">
-        <action
-            android:id="@+id/action_profileScreen_to_editProfileScreen"
-            app:destination="@id/editProfileScreen" />
-    </fragment>
+        tools:layout="@layout/screen_profile"/>
 
     <fragment
         android:id="@+id/teacherScreen"
         android:name="uz.unidev.timetable.presentation.main.teacher.TeacherScreen"
         android:label="TeacherScreen"
         tools:layout="@layout/screen_teacher" />
-
-    <fragment
-        android:id="@+id/editProfileScreen"
-        android:name="uz.unidev.timetable.presentation.main.profile.edit.EditProfileScreen"
-        android:label="EditProfileScreen"
-        tools:layout="@layout/screen_edit_profile" />
-
-    <fragment
-        android:id="@+id/timetableScreen"
-        android:name="uz.unidev.timetable.presentation.main.timetable.TimetableScreen"
-        android:label="DaysScreen"
-        tools:layout="@layout/screen_timetable">
-        <argument
-            android:name="week_data"
-            app:argType="uz.unidev.timetable.data.models.WeekData" />
-        <argument
-            android:name="group_id"
-            android:defaultValue='""'
-            app:argType="string" />
-    </fragment>
 
     <fragment
         android:id="@+id/addLessonScreen"
@@ -62,24 +38,8 @@
         android:id="@+id/groupsScreen"
         android:name="uz.unidev.timetable.presentation.main.timetable.groups.GroupsScreen"
         android:label="GroupsScreen"
-        tools:layout="@layout/screen_groups">
-        <action
-            android:id="@+id/action_groupsScreen_to_weekScreen"
-            app:destination="@id/weekScreen" />
-    </fragment>
+        tools:layout="@layout/screen_groups"/>
 
-    <fragment
-        android:id="@+id/weekScreen"
-        android:name="uz.unidev.timetable.presentation.main.timetable.weeks.WeekScreen"
-        android:label="WeekScreen"
-        tools:layout="@layout/screen_week">
-        <action
-            android:id="@+id/action_weekScreen_to_timetableScreen"
-            app:destination="@id/timetableScreen" />
-        <argument
-            android:name="group_data"
-            app:argType="uz.unidev.timetable.data.models.GroupData" />
-    </fragment>
     <fragment
         android:id="@+id/editLessonScreen"
         android:name="uz.unidev.timetable.presentation.main.timetable.editLesson.EditLessonScreen"
@@ -99,10 +59,5 @@
     <action
         android:id="@+id/action_global_editLessonScreen"
         app:destination="@id/editLessonScreen" />
-    <fragment
-        android:id="@+id/settingsScreen"
-        tools:layout="@layout/screen_settings"
-        android:name="uz.unidev.timetable.presentation.main.settings.SettingsScreen"
-        android:label="SettingsScreen" /><action android:id="@+id/action_global_settingsScreen" app:destination="@id/settingsScreen"/>
 
 </navigation>

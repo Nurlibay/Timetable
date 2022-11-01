@@ -7,12 +7,17 @@ import android.view.View
 import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import uz.unidev.timetable.NavAuthDirections
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.GroupData
 import uz.unidev.timetable.databinding.ScreenGroupsBinding
+import uz.unidev.timetable.presentation.main.MainContainer
+import uz.unidev.timetable.presentation.main.timetable.lesson.LessonScreen
+import uz.unidev.timetable.presentation.main.timetable.weeks.WeekScreen
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider
 import uz.unidev.timetable.utils.extensions.showMessage
@@ -28,6 +33,7 @@ class GroupsScreen : Fragment(R.layout.screen_groups) {
     private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     private val adapter by lazy { GroupAdapter() }
     private val handler: Handler by lazy { Handler(Looper.getMainLooper()) }
+    private lateinit var parentNavController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -60,7 +66,13 @@ class GroupsScreen : Fragment(R.layout.screen_groups) {
             rvGroups.setHasFixedSize(true)
         }
         adapter.setOnItemClickListener {
-            navController.navigate(GroupsScreenDirections.actionGroupsScreenToWeekScreen(it))
+            val weekScreen = WeekScreen()
+            val args = Bundle()
+            args.putParcelable("group_data", it)
+            weekScreen.arguments = args
+
+            parentNavController = (parentFragment?.parentFragment as MainContainer).findNavController()
+            parentNavController.navigate(R.id.action_global_weekScreen, args)
         }
     }
 

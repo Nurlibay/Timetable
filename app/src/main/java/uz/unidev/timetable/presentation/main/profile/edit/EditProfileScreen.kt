@@ -28,7 +28,7 @@ class EditProfileScreen: Fragment(R.layout.screen_edit_profile) {
         setupObserver()
         binding.apply {
             btnCancel.setOnClickListener {
-                navController.navigateUp()
+                navController.popBackStack()
             }
             containerImage.setOnClickListener {
 

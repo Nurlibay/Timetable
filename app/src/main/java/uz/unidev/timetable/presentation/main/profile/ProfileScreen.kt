@@ -4,13 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import uz.unidev.timetable.NavAuthDirections
-import uz.unidev.timetable.NavMainDirections
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenProfileBinding
+import uz.unidev.timetable.presentation.main.MainContainer
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.showMessage
 
@@ -22,7 +22,7 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
 
     private val binding: ScreenProfileBinding by viewBinding()
     private val viewModel: ProfileViewModel by viewModel()
-    private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
+    private lateinit var parentNavController: NavController
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,10 +30,12 @@ class ProfileScreen : Fragment(R.layout.screen_profile) {
         setupObserver()
         binding.apply {
             imageEdit.setOnClickListener {
-                navController.navigate(ProfileScreenDirections.actionProfileScreenToEditProfileScreen())
+                parentNavController = (parentFragment?.parentFragment as MainContainer).findNavController()
+                parentNavController.navigate(R.id.action_mainContainer_to_editProfileScreen)
             }
             iconSettings.setOnClickListener {
-                navController.navigate(NavAuthDirections.actionGlobalSettingsScreen())
+                parentNavController = (parentFragment?.parentFragment as MainContainer).findNavController()
+                parentNavController.navigate(R.id.action_mainContainer_to_settingsScreen)
             }
         }
     }

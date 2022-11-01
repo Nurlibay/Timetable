@@ -35,8 +35,15 @@
         android:label="MainContainer"
         tools:layout="@layout/container_main">
         <action
-            android:id="@+id/action_mainContainer_to_editLessonScreen"
-            app:destination="@id/editLessonScreen" />
+            android:id="@+id/action_mainContainer_to_settingsScreen"
+            app:destination="@id/settingsScreen" />
+        <action
+            android:id="@+id/action_mainContainer_to_editProfileScreen"
+            app:destination="@id/editProfileScreen" />
+        <action
+            android:id="@+id/action_mainContainer_to_weekScreen"
+            app:destination="@id/weekScreen" />
+
     </fragment>
     <fragment
         android:id="@+id/splashScreen"
@@ -72,12 +79,46 @@
     <action
         android:id="@+id/action_global_editLessonScreen"
         app:destination="@id/editLessonScreen" />
+
     <fragment
         android:id="@+id/settingsScreen"
         android:name="uz.unidev.timetable.presentation.main.settings.SettingsScreen"
         android:label="SettingsScreen"
-        tools:layout="@layout/screen_settings" />
-    <action
-        android:id="@+id/action_global_settingsScreen"
-        app:destination="@id/settingsScreen" />
+        tools:layout="@layout/screen_settings"
+        />
+
+    <fragment
+        android:id="@+id/editProfileScreen"
+        android:name="uz.unidev.timetable.presentation.main.profile.edit.EditProfileScreen"
+        android:label="EditProfileScreen"
+        tools:layout="@layout/screen_edit_profile"
+        />
+    <fragment
+        android:id="@+id/weekScreen"
+        android:name="uz.unidev.timetable.presentation.main.timetable.weeks.WeekScreen"
+        android:label="WeekScreen"
+        tools:layout="@layout/screen_week"
+        >
+        <argument
+            android:name="group_data"
+            app:argType="uz.unidev.timetable.data.models.GroupData" />
+        <action
+            android:id="@+id/action_weekScreen_to_timetableScreen"
+            app:destination="@id/timetableScreen" />
+    </fragment>
+    <action android:id="@+id/action_global_weekScreen" app:destination="@id/weekScreen" />
+    <fragment
+        android:id="@+id/timetableScreen"
+        android:name="uz.unidev.timetable.presentation.main.timetable.TimetableScreen"
+        android:label="TimetableScreen"
+        tools:layout="@layout/screen_timetable"
+        >
+        <argument
+            android:name="week_data"
+            app:argType="uz.unidev.timetable.data.models.WeekData" />
+        <argument
+            android:name="group_id"
+            app:argType="string" />
+    </fragment>
+
 </navigation>
