@@ -49,6 +49,10 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             val subGroupAdapter = ArrayAdapter(requireContext(), R.layout.item_days, subGroups)
             autoCompleteTextViewSubGroup.setAdapter(subGroupAdapter)
 
+            val lessonTypes = resources.getStringArray(R.array.lessonType)
+            val lessonTypeAdapter = ArrayAdapter(requireContext(), R.layout.item_days, lessonTypes)
+            autoCompleteTextViewLessonType.setAdapter(lessonTypeAdapter)
+
             iconSetStartTime.setOnClickListener {
                 openTimePickerForStartTime()
             }
@@ -75,7 +79,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
                                 autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
-                                autoCompleteTextViewSubGroup.text.toString()
+                                autoCompleteTextViewSubGroup.text.toString(),
+                                autoCompleteTextViewLessonType.text.toString()
                             )
                         )
                     } else {
@@ -90,7 +95,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
                                 args.lessonData.dayName.lowercase(),
-                                autoCompleteTextViewSubGroup.text.toString()
+                                autoCompleteTextViewSubGroup.text.toString(),
+                                autoCompleteTextViewLessonType.text.toString()
                             )
                         )
                         addLessonViewModel.addLesson(
@@ -104,7 +110,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etEndTime.text.toString(),
                                 etTeacher.text.toString(),
                                 autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
-                                autoCompleteTextViewSubGroup.text.toString()
+                                autoCompleteTextViewSubGroup.text.toString(),
+                                autoCompleteTextViewLessonType.text.toString()
                             )
                         )
                     }
@@ -120,6 +127,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             etTeacher.setText(args.lessonData.teacher)
             etRoom.setText(args.lessonData.room)
             autoCompleteTextView.setText(args.lessonData.dayName.toDayRus())
+            autoCompleteTextViewLessonType.setText(args.lessonData.lessonType)
             autoCompleteTextViewSubGroup.setText(args.lessonData.subGroup)
             etStartTime.setText(args.lessonData.startTime)
             etEndTime.setText(args.lessonData.endTime)

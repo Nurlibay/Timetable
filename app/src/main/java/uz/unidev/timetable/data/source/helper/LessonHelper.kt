@@ -53,7 +53,8 @@ class LessonHelper(
                     lessonData.endTime,
                     lessonData.teacher,
                     lessonData.dayName,
-                    lessonData.subGroup
+                    lessonData.subGroup,
+                    lessonData.lessonType,
                 )
             )
             .addOnSuccessListener {
@@ -81,6 +82,7 @@ class LessonHelper(
         map["teacher"] = lessonData.teacher
         map["dayName"] = lessonData.dayName
         map["subGroup"] = lessonData.subGroup
+        map["lessonType"] = lessonData.lessonType
 
         db.collection(Constants.TIMETABLE).document(groupId).collection(Constants.WEEKS)
             .document(weekName).collection(lessonData.dayName).document(lessonData.id).update(map)

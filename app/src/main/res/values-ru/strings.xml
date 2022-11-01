@@ -87,6 +87,11 @@
         <item>Подгруппа 2</item>
     </string-array>
 
+    <string-array name="lessonType">
+        <item>Лекция</item>
+        <item>Лаборатория</item>
+    </string-array>
+
     <string name="edit_lesson_status">Урок успешно отредактирован</string>
     <string name="lesson_delete_status">Урок успешно удален</string>
     <string name="add_lesson_status">Урок успешно добавлен</string>

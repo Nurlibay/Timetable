@@ -86,6 +86,11 @@
         <item>Sub group 2</item>
     </string-array>
 
+    <string-array name="lessonType">
+        <item>Lecture</item>
+        <item>Laboratory</item>
+    </string-array>
+
     <string name="edit_lesson_status">Lesson Successfully edited</string>
     <string name="lesson_delete_status">Lesson Successfully deleted</string>
     <string name="add_lesson_status">Lesson Successfully added</string>

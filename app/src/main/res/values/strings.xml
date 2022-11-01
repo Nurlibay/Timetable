@@ -71,6 +71,7 @@
     <string name="edit_lesson_status">Lesson Successfully edited</string>
     <string name="lesson_delete_status">Lesson Successfully deleted</string>
     <string name="add_lesson_status">Lesson Successfully added</string>
+    <string name="lesson_type">Lesson type</string>
 
     <string-array name="days">
         <item>Monday</item>
@@ -86,6 +87,11 @@
         <item>Full group</item>
         <item>Sub group 1</item>
         <item>Sub group 2</item>
+    </string-array>
+
+    <string-array name="lessonType">
+        <item>Lecture</item>
+        <item>Laboratory</item>
     </string-array>
 
 </resources>

@@ -28,6 +28,7 @@ class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(Le
                 tvTeacherName.text = item.teacher
                 tvLessonName.text = item.name
                 tvSubGroup.text = item.subGroup
+                tvLessonType.text = "(${item.lessonType})"
 
                 root.setOnLongClickListener {
                     itemClick.invoke(item, it)
