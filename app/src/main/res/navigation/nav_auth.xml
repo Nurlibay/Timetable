@@ -119,6 +119,25 @@
         <argument
             android:name="group_id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_timetableScreen_to_addLessonScreen"
+            app:destination="@id/addLessonScreen" />
+        <action
+            android:id="@+id/action_timetableScreen_to_editLessonScreen"
+            app:destination="@id/editLessonScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/addLessonScreen"
+        android:name="uz.unidev.timetable.presentation.main.timetable.addLesson.AddLessonScreen"
+        android:label="AddLessonScreen"
+        tools:layout="@layout/screen_add_lesson"
+        >
+        <argument
+            android:name="group_id"
+            app:argType="string" />
+        <argument
+            android:name="week_id"
+            app:argType="string" />
     </fragment>
 
 </navigation>

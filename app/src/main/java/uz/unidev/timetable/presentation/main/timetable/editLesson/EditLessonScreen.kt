@@ -19,6 +19,7 @@ import uz.unidev.timetable.presentation.main.timetable.lesson.LessonViewModel
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.showMessage
 import uz.unidev.timetable.utils.extensions.toDayEnglish
+import uz.unidev.timetable.utils.extensions.toDayRus
 
 /**
  *  Created by Nurlibay Koshkinbaev on 27/10/2022 14:46
@@ -118,7 +119,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             etName.setText(args.lessonData.name)
             etTeacher.setText(args.lessonData.teacher)
             etRoom.setText(args.lessonData.room)
-            autoCompleteTextView.setText(args.lessonData.dayName)
+            autoCompleteTextView.setText(args.lessonData.dayName.toDayRus())
             autoCompleteTextViewSubGroup.setText(args.lessonData.subGroup)
             etStartTime.setText(args.lessonData.startTime)
             etEndTime.setText(args.lessonData.endTime)

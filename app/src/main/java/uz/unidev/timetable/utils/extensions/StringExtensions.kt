@@ -48,3 +48,25 @@ fun String.toDayEnglish(): String {
     }
     return res
 }
+
+fun String.toDayRus(): String {
+    var res = ""
+    if (this == "monday") {
+        res = "Понедельник"
+    } else if (this == "tuesday") {
+        res = "Вторник"
+    } else if (this == "wednesday") {
+        res = "Среда"
+    } else if (this == "thursday") {
+        res = "Четверг"
+    } else if (this == "friday") {
+        res = "Пятница"
+    } else if (this == "saturday") {
+        res = "Суббота"
+    } else if (this == "sunday") {
+        res = "Воскресенье"
+    } else {
+        res = this
+    }
+    return res
+}

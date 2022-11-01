@@ -38,10 +38,10 @@ class TimetableScreen : Fragment(R.layout.screen_timetable) {
             }
 
             fab.setOnClickListener {
-                navController.navigate(TimetableScreenDirections.actionGlobalAddLessonScreen(args.groupId, args.weekData.id))
+                navController.navigate(TimetableScreenDirections.actionTimetableScreenToAddLessonScreen(args.groupId, args.weekData.id))
             }
 
-            tvStartDate.text = args.weekData.startDate + "-"
+            tvStartDate.text = args.weekData.startDate + " - "
             tvEndDate.text = args.weekData.endDate
         }
     }

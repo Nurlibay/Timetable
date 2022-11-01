@@ -17,6 +17,7 @@ import uz.unidev.timetable.NavMainDirections
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenLessonBinding
 import uz.unidev.timetable.presentation.main.MainContainer
+import uz.unidev.timetable.presentation.main.timetable.TimetableScreenDirections
 import uz.unidev.timetable.presentation.main.timetable.editLesson.EditLessonScreen
 import uz.unidev.timetable.utils.Constants
 import uz.unidev.timetable.utils.ResourceState
@@ -87,7 +88,7 @@ class LessonScreen : Fragment(R.layout.screen_lesson) {
             popupMenu.setOnMenuItemClickListener {
                 when (it.itemId) {
                     R.id.edit -> {
-                        findNavController().navigate(NavAuthDirections.actionGlobalEditLessonScreen(groupId, weekId, lessonData))
+                        findNavController().navigate(TimetableScreenDirections.actionTimetableScreenToEditLessonScreen(groupId, weekId, lessonData))
                     }
                     R.id.delete -> {
                         viewModel.deleteLesson(groupId, weekId, lessonData)
