@@ -32,7 +32,6 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
     private val navController by lazy { findNavController() }
     private val viewModel: AddLessonViewModel by viewModel()
     private val args: AddLessonScreenArgs by navArgs()
-    private val pref: SharedPref by inject()
     private val lessonType = MutableLiveData<List<String>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +59,6 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                 if (autoCompleteTextViewLessonType.text.toString() == "Laboratory") {
                     tilSubGroup.visibility = View.VISIBLE
                 } else {
-
                     tilSubGroup.visibility = View.GONE
                 }
             }
