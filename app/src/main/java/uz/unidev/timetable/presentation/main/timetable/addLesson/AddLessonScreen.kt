@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -32,6 +33,12 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
     private val viewModel: AddLessonViewModel by viewModel()
     private val args: AddLessonScreenArgs by navArgs()
     private val pref: SharedPref by inject()
+    private val lessonType = MutableLiveData<List<String>>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        lessonType.postValue(listOf("Lecture", "Laboratory"))
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +55,14 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
             val lessonTypes = resources.getStringArray(R.array.lessonType)
             val lessonTypeAdapter = ArrayAdapter(requireContext(), R.layout.item_days, lessonTypes)
             autoCompleteTextViewLessonType.setAdapter(lessonTypeAdapter)
+
+            autoCompleteTextViewLessonType.setOnItemClickListener { _, _, pos, _ ->
+                if (autoCompleteTextViewLessonType.text.toString() == "Laboratory") {
+                    tilSubGroup.visibility = View.VISIBLE
+                } else {
+                    tilSubGroup.visibility = View.GONE
+                }
+            }
 
             iconSetStartTime.setOnClickListener {
                 openTimePickerForStartTime()
