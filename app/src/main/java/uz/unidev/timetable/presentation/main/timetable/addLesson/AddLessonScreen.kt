@@ -11,12 +11,11 @@ import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.google.android.material.timepicker.TimeFormat
-import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.LessonData
-import uz.unidev.timetable.data.source.pref.SharedPref
 import uz.unidev.timetable.databinding.ScreenAddLessonBinding
+import uz.unidev.timetable.presentation.main.timetable.groups.GroupsViewModel
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.showMessage
 import uz.unidev.timetable.utils.extensions.toDayEnglish
@@ -32,16 +31,18 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
     private val navController by lazy { findNavController() }
     private val viewModel: AddLessonViewModel by viewModel()
     private val args: AddLessonScreenArgs by navArgs()
-    private val lessonType = MutableLiveData<List<String>>()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        lessonType.postValue(listOf("Lecture", "Laboratory"))
-    }
+    private val groupsAdapter by lazy { GroupNameAdapter() }
+    private val groupViewModel: GroupsViewModel by viewModel()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         setupObserver()
+        setupObserverGroupData()
+
+        binding.rvGroups.adapter = groupsAdapter
+        groupViewModel.getGroupData()
+
         binding.apply {
             val days = resources.getStringArray(R.array.days)
             val adapter = ArrayAdapter(requireContext(), R.layout.item_days, days)
@@ -58,7 +59,9 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
             autoCompleteTextViewLessonType.setOnItemClickListener { _, _, pos, _ ->
                 if (autoCompleteTextViewLessonType.text.toString() == "Laboratory") {
                     tilSubGroup.visibility = View.VISIBLE
+                    containerGroupList.visibility = View.GONE
                 } else {
+                    containerGroupList.visibility = View.VISIBLE
                     tilSubGroup.visibility = View.GONE
                 }
             }
@@ -89,10 +92,36 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                             etTeacher.text.toString(),
                             autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                             autoCompleteTextViewSubGroup.text.toString(),
-                            autoCompleteTextViewLessonType.text.toString()
+                            if(autoCompleteTextViewLessonType.text.toString() == "Lecture") 0 else 1
                         )
                     )
                     navController.popBackStack()
+                }
+            }
+        }
+    }
+
+    private fun setupObserverGroupData() {
+        groupViewModel.group.observe(viewLifecycleOwner) {
+            when (it.status) {
+                ResourceState.LOADING -> {
+                    setLoading(true)
+                }
+                ResourceState.SUCCESS -> {
+                    setLoading(false)
+                    binding.apply {
+                        it.data?.let { groups ->
+                            groupsAdapter.submitList(groups)
+                        }
+                    }
+                }
+                ResourceState.ERROR -> {
+                    setLoading(false)
+                    showMessage(it.message.toString())
+                }
+                ResourceState.NETWORK_ERROR -> {
+                    setLoading(false)
+                    showMessage(getString(R.string.no_internet))
                 }
             }
         }

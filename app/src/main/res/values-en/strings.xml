@@ -62,6 +62,11 @@
     <string name="empty" />
     <string name="sub_group">Sub group</string>
 
+    <string name="lesson_type">Lesson type</string>
+    <string name="group_name">010101</string>
+    <string name="lesson_type_lab">Laboratory</string>
+    <string name="lesson_type_lec">Lecture</string>
+
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
     <string name="wednesday">Wednesday</string>

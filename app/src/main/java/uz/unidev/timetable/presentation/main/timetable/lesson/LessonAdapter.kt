@@ -17,7 +17,8 @@ import uz.unidev.timetable.databinding.ItemLessonBinding
 
 class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(LessonItemCallBack) {
 
-    inner class LessonViewHolder(private val binding: ItemLessonBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class LessonViewHolder(private val binding: ItemLessonBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
         fun bind() {
             val item = getItem(absoluteAdapterPosition)
@@ -28,7 +29,25 @@ class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(Le
                 tvTeacherName.text = item.teacher
                 tvLessonName.text = item.name
                 tvSubGroup.text = item.subGroup
-                tvLessonType.text = "(${item.lessonType})"
+
+                var groups = ""
+
+                if (item.groups.isEmpty()) {
+                    tvGroupsName.visibility = View.VISIBLE
+                    tvSubGroup.visibility = View.GONE
+                    item.groups.forEach {
+                        groups = "$it "
+                    }
+                    tvGroupsName.text = groups
+                } else {
+                    tvGroupsName.visibility = View.GONE
+                    tvSubGroup.visibility = View.VISIBLE
+                    if (item.lessonType == 0) {
+                        tvLessonType.text = root.context.getString(R.string.lesson_type_lec)
+                    } else {
+                        tvLessonType.text = root.context.getString(R.string.lesson_type_lab)
+                    }
+                }
 
                 root.setOnLongClickListener {
                     itemClick.invoke(item, it)
@@ -38,13 +57,17 @@ class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(Le
         }
     }
 
-    private var itemClick: (lessonData: LessonData, view: View) -> Unit = { _, _ ->}
-    fun setOnItemLongClickListener(block: (LessonData, view: View) -> Unit){
+    private var itemClick: (lessonData: LessonData, view: View) -> Unit = { _, _ -> }
+    fun setOnItemLongClickListener(block: (LessonData, view: View) -> Unit) {
         itemClick = block
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonViewHolder {
-        return LessonViewHolder(ItemLessonBinding.bind(LayoutInflater.from(parent.context).inflate(R.layout.item_lesson, parent,false)))
+        return LessonViewHolder(
+            ItemLessonBinding.bind(
+                LayoutInflater.from(parent.context).inflate(R.layout.item_lesson, parent, false)
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: LessonViewHolder, position: Int) {

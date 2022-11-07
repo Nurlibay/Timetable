@@ -57,7 +57,8 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                 if (autoCompleteTextViewLessonType.text.toString() == "Laboratory") {
                     tilSubGroup.visibility = View.VISIBLE
                 } else {
-
+                    /** TO DO */
+                    
                     tilSubGroup.visibility = View.GONE
                 }
             }
@@ -89,7 +90,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etTeacher.text.toString(),
                                 autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                                 autoCompleteTextViewSubGroup.text.toString(),
-                                autoCompleteTextViewLessonType.text.toString()
+                                if(autoCompleteTextViewLessonType.text.toString() == "Lecture") 0 else 1
                             )
                         )
                     } else {
@@ -105,7 +106,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etTeacher.text.toString(),
                                 args.lessonData.dayName.lowercase(),
                                 autoCompleteTextViewSubGroup.text.toString(),
-                                autoCompleteTextViewLessonType.text.toString()
+                                if(autoCompleteTextViewLessonType.text.toString() == "Lecture") 0 else 1
                             )
                         )
                         addLessonViewModel.addLesson(
@@ -120,7 +121,7 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
                                 etTeacher.text.toString(),
                                 autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                                 autoCompleteTextViewSubGroup.text.toString(),
-                                autoCompleteTextViewLessonType.text.toString()
+                                if(autoCompleteTextViewLessonType.text.toString() == "Lecture") 0 else 1
                             )
                         )
                     }
@@ -136,7 +137,11 @@ class EditLessonScreen : Fragment(R.layout.screen_edit_lesson) {
             etTeacher.setText(args.lessonData.teacher)
             etRoom.setText(args.lessonData.room)
             autoCompleteTextView.setText(args.lessonData.dayName.toDayRus())
-            autoCompleteTextViewLessonType.setText(args.lessonData.lessonType)
+            if(args.lessonData.lessonType == 0){
+                autoCompleteTextViewLessonType.setText(requireContext().getString(R.string.lesson_type_lec))
+            } else {
+                autoCompleteTextViewLessonType.setText(requireContext().getString(R.string.lesson_type_lab))
+            }
             autoCompleteTextViewSubGroup.setText(args.lessonData.subGroup)
             etStartTime.setText(args.lessonData.startTime)
             etEndTime.setText(args.lessonData.endTime)

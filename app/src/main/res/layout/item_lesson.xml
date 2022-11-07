@@ -94,6 +94,17 @@
             android:text="(Laboratory)" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_groups_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:gravity="end|bottom"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:visibility="gone"
+            android:text="010101, 020202, 030303" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_sub_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

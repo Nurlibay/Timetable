@@ -96,4 +96,9 @@
     <string name="lesson_delete_status">Урок успешно удален</string>
     <string name="add_lesson_status">Урок успешно добавлен</string>
 
+    <string name="lesson_type">Тип урока</string>
+    <string name="group_name">010101</string>
+    <string name="lesson_type_lab">Лаборатория</string>
+    <string name="lesson_type_lec">Лекция</string>
+
 </resources>

@@ -2,6 +2,7 @@ package uz.unidev.timetable.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
 /**
  *  Created by Nurlibay Koshkinbaev on 26/10/2022 15:55
@@ -17,5 +18,6 @@ data class LessonData(
     var teacher: String = "",
     var dayName: String = "",
     var subGroup: String = "",
-    var lessonType: String = ""
+    var lessonType: Int = -1,
+    var groups: List<String> = emptyList()
 ): Parcelable
