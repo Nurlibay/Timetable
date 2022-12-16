@@ -24,7 +24,8 @@
             app:destination="@id/mainContainer"
             app:launchSingleTop="true"
             app:popUpTo="@id/nav_auth"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_signInScreen_to_signUpScreen"
             app:destination="@id/signUpScreen" />
@@ -55,7 +56,8 @@
             app:destination="@id/signInScreen"
             app:launchSingleTop="true"
             app:popUpTo="@id/nav_auth"
-            app:popUpToInclusive="true" />
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_splashScreen_to_mainContainer"
             app:destination="@id/mainContainer"

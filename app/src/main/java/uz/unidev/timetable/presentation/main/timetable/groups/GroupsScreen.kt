@@ -11,12 +11,10 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import uz.unidev.timetable.NavAuthDirections
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.GroupData
 import uz.unidev.timetable.databinding.ScreenGroupsBinding
 import uz.unidev.timetable.presentation.main.MainContainer
-import uz.unidev.timetable.presentation.main.timetable.lesson.LessonScreen
 import uz.unidev.timetable.presentation.main.timetable.weeks.WeekScreen
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider

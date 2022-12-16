@@ -7,23 +7,16 @@ import android.view.View
 import android.widget.PopupMenu
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.navigation.NavDirections
-import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import uz.unidev.timetable.NavAuthDirections
-import uz.unidev.timetable.NavMainDirections
 import uz.unidev.timetable.R
 import uz.unidev.timetable.databinding.ScreenLessonBinding
-import uz.unidev.timetable.presentation.main.MainContainer
 import uz.unidev.timetable.presentation.main.timetable.TimetableScreenDirections
-import uz.unidev.timetable.presentation.main.timetable.editLesson.EditLessonScreen
 import uz.unidev.timetable.utils.Constants
 import uz.unidev.timetable.utils.ResourceState
 import uz.unidev.timetable.utils.extensions.addVerticalDivider
 import uz.unidev.timetable.utils.extensions.showMessage
-
 
 /**
  *  Created by Nurlibay Koshkinbaev on 26/10/2022 17:32

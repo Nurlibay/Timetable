@@ -32,16 +32,17 @@ class LessonAdapter : ListAdapter<LessonData, LessonAdapter.LessonViewHolder>(Le
 
                 var groups = ""
 
-                if (item.groups.isEmpty()) {
+                if (item.groups.isNotEmpty()) {
                     tvGroupsName.visibility = View.VISIBLE
                     tvSubGroup.visibility = View.GONE
                     item.groups.forEach {
-                        groups = "$it "
+                        groups += "$it "
                     }
                     tvGroupsName.text = groups
                 } else {
                     tvGroupsName.visibility = View.GONE
                     tvSubGroup.visibility = View.VISIBLE
+                    tvGroupsName.text = item.subGroup
                     if (item.lessonType == 0) {
                         tvLessonType.text = root.context.getString(R.string.lesson_type_lec)
                     } else {

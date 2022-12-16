@@ -1,14 +1,17 @@
 package uz.unidev.timetable.presentation.main.timetable.addLesson
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import uz.unidev.timetable.R
 import uz.unidev.timetable.data.models.GroupData
 import uz.unidev.timetable.databinding.ItemGroupNameBinding
+import uz.unidev.timetable.utils.extensions.onClick
 
 /**
  *  Created by Nurlibay Koshkinbaev on 02/11/2022 15:31
@@ -22,15 +25,17 @@ class GroupNameAdapter : ListAdapter<GroupData, GroupNameAdapter.GroupNameViewHo
             val item = getItem(absoluteAdapterPosition)
             binding.apply {
                 checkboxGroup.text = item.name
-                root.setOnClickListener {
-                    itemClick.invoke(item)
+                checkboxGroup.onClick {
+                    if(checkboxGroup.isChecked){
+                        itemClick.invoke(item.name)
+                    }
                 }
             }
         }
     }
 
-    private var itemClick: (groupData: GroupData) -> Unit = {}
-    fun setOnItemClickListener(block: (GroupData) -> Unit){
+    private var itemClick: (groupName: String) -> Unit = {}
+    fun setOnItemClickListener(block: (String) -> Unit){
         itemClick = block
     }
 

@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.MutableLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -17,6 +16,7 @@ import uz.unidev.timetable.data.models.LessonData
 import uz.unidev.timetable.databinding.ScreenAddLessonBinding
 import uz.unidev.timetable.presentation.main.timetable.groups.GroupsViewModel
 import uz.unidev.timetable.utils.ResourceState
+import uz.unidev.timetable.utils.extensions.onClick
 import uz.unidev.timetable.utils.extensions.showMessage
 import uz.unidev.timetable.utils.extensions.toDayEnglish
 import java.util.*
@@ -33,6 +33,7 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
     private val args: AddLessonScreenArgs by navArgs()
     private val groupsAdapter by lazy { GroupNameAdapter() }
     private val groupViewModel: GroupsViewModel by viewModel()
+    private val groups: MutableList<String> = mutableListOf()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -63,6 +64,9 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                 } else {
                     containerGroupList.visibility = View.VISIBLE
                     tilSubGroup.visibility = View.GONE
+                    groupsAdapter.setOnItemClickListener {
+                        groups.add(it)
+                    }
                 }
             }
 
@@ -78,7 +82,7 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                 navController.popBackStack()
             }
 
-            iconDone.setOnClickListener {
+            iconDone.onClick {
                 if (validate()) {
                     viewModel.addLesson(
                         args.groupId,
@@ -92,7 +96,8 @@ class AddLessonScreen : Fragment(R.layout.screen_add_lesson) {
                             etTeacher.text.toString(),
                             autoCompleteTextView.text.toString().toDayEnglish().lowercase(),
                             autoCompleteTextViewSubGroup.text.toString(),
-                            if(autoCompleteTextViewLessonType.text.toString() == "Lecture") 0 else 1
+                            if(autoCompleteTextViewLessonType.text.toString() == "Lecture") 0 else 1,
+                            groups
                         )
                     )
                     navController.popBackStack()

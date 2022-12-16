@@ -55,6 +55,7 @@ class LessonHelper(
                     lessonData.dayName,
                     lessonData.subGroup,
                     lessonData.lessonType,
+                    lessonData.groups
                 )
             )
             .addOnSuccessListener {
